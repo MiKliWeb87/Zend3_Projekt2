@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink 
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -15,7 +15,7 @@ use Application\I18n\I18nListener;
 use Application\I18n\I18nListenerFactory;
 use Application\Permissions\Resource\IndexResource;
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\CompanyRole;
+use UserModel\Permissions\Role\TravelCenterRole;
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Navigation\Page\Mvc;
 use Zend\Permissions\Acl\Acl;
@@ -110,7 +110,7 @@ return [
                 ],
             ],
         ],
-        CompanyRole::NAME => [
+        TravelCenterRole::NAME => [
             IndexResource::NAME => [
                 Acl::TYPE_ALLOW => [
                     IndexResource::PRIVILEGE_INDEX,

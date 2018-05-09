@@ -2,15 +2,15 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertModel\InputFilter;
 
 use AdvertModel\Config\AdvertConfigInterface;
-use CompanyModel\Repository\CompanyRepositoryInterface;
+use TravelCenterModel\Repository\TravelCenterRepositoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
@@ -35,9 +35,9 @@ class AdvertInputFilterFactory implements FactoryInterface
         /** @var AdvertConfigInterface $advertConfig */
         $advertConfig = $container->get(AdvertConfigInterface::class);
 
-        /** @var CompanyRepositoryInterface $companyRepository */
-        $companyRepository = $container->get(
-            CompanyRepositoryInterface::class
+        /** @var TravelCenterRepositoryInterface $travelcenterRepository */
+        $travelcenterRepository = $container->get(
+            TravelCenterRepositoryInterface::class
         );
 
         $inputFilter = new AdvertInputFilter();
@@ -47,8 +47,8 @@ class AdvertInputFilterFactory implements FactoryInterface
         $inputFilter->setTypeOptions(
             array_keys($advertConfig->getTypeOptions())
         );
-        $inputFilter->setCompanyOptions(
-            array_keys($companyRepository->getCompanyOptions())
+        $inputFilter->setTravelCenterOptions(
+            array_keys($travelcenterRepository->getTravelCenterOptions())
         );
 
         return $inputFilter;

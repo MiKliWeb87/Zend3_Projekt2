@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -12,7 +12,7 @@ namespace AdvertBackend\Form;
 use AdvertModel\Config\AdvertConfigInterface;
 use AdvertModel\Hydrator\AdvertHydrator;
 use AdvertModel\InputFilter\AdvertInputFilter;
-use CompanyModel\Repository\CompanyRepositoryInterface;
+use TravelCenterModel\Repository\TravelCenterRepositoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\Hydrator\HydratorPluginManager;
 use Zend\InputFilter\InputFilterInterface;
@@ -54,9 +54,9 @@ class AdvertFormFactory implements FactoryInterface
         /** @var AdvertConfigInterface $advertConfig */
         $advertConfig = $container->get(AdvertConfigInterface::class);
 
-        /** @var CompanyRepositoryInterface $companyRepository */
-        $companyRepository = $container->get(
-            CompanyRepositoryInterface::class
+        /** @var TravelCenterRepositoryInterface $travelcenterRepository */
+        $travelcenterRepository = $container->get(
+            TravelCenterRepositoryInterface::class
         );
 
         $form = new AdvertForm();
@@ -64,7 +64,7 @@ class AdvertFormFactory implements FactoryInterface
         $form->setInputFilter($advertInputFilter);
         $form->setStatusOptions($advertConfig->getStatusOptions());
         $form->setTypeOptions($advertConfig->getTypeOptions());
-        $form->setCompanyOptions($companyRepository->getCompanyOptions());
+        $form->setTravelCenterOptions($travelcenterRepository->getTravelCenterOptions());
 
         return $form;
     }

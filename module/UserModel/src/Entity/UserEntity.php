@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -134,8 +134,8 @@ class UserEntity
      */
     public function setRole($role)
     {
-        if (!in_array($role, ['company', 'admin'])) {
-            $role = 'company';
+        if (!in_array($role, ['travelcenter', 'admin'])) {
+            $role = 'travelcenter';
         }
 
         $this->role = $role;

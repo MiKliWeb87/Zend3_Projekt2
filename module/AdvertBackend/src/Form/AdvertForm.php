@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -36,7 +36,7 @@ class AdvertForm extends Form implements AdvertFormInterface
     /**
      * @var array
      */
-    private $companyOptions;
+    private $travelcenterOptions;
 
     /**
      * @param array $statusOptions
@@ -55,11 +55,11 @@ class AdvertForm extends Form implements AdvertFormInterface
     }
 
     /**
-     * @param array $companyOptions
+     * @param array $travelcenterOptions
      */
-    public function setCompanyOptions($companyOptions)
+    public function setTravelCenterOptions($travelcenterOptions)
     {
-        $this->companyOptions = $companyOptions;
+        $this->travelcenterOptions = $travelcenterOptions;
     }
 
     /**
@@ -108,13 +108,13 @@ class AdvertForm extends Form implements AdvertFormInterface
         $this->add(
             [
                 'type'       => Select::class,
-                'name'       => 'company',
+                'name'       => 'travelcenter',
                 'attributes' => [
                     'class' => 'form-control',
                 ],
                 'options'    => [
-                    'value_options' => $this->companyOptions,
-                    'label'         => 'advert_backend_label_company',
+                    'value_options' => $this->travelcenterOptions,
+                    'label'         => 'advert_backend_label_travelcenter',
                 ],
             ]
         );
@@ -186,8 +186,8 @@ class AdvertForm extends Form implements AdvertFormInterface
             $this->remove('type');
         }
 
-        if ($this->has('company')) {
-            $this->remove('company');
+        if ($this->has('travelcenter')) {
+            $this->remove('travelcenter');
         }
 
         $this->setValidationGroup(array_keys($this->getElements()));

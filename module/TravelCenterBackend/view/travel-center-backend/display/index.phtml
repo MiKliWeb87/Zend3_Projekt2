@@ -1,0 +1,120 @@
+<?php
+/**
+ * ZF3 book Zend Framework Center Example Application
+ *
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink 
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+use TravelCenterModel\Entity\TravelCenterEntity;
+
+$addLink = $this->url(
+    'travelcenter-backend/modify', ['action' => 'add'], true
+);
+
+$this->headTitle('travelcenter_backend_title_display_index');
+$this->h1('travelcenter_backend_h1_display_index');
+?>
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+  <tr>
+    <th><?= $this->translate('travelcenter_backend_label_status') ?></th>
+    <th><?= $this->translate('travelcenter_backend_label_name') ?></th>
+    <th class="hidden-xs">
+      <?= $this->translate('travelcenter_backend_label_email') ?>
+    </th>
+    <th class="hidden-xs">
+      <?= $this->translate('travelcenter_backend_label_contact') ?>
+    </th>
+    <th class="hidden-xs">
+      <?= $this->translate('travelcenter_backend_label_updated') ?>
+    </th>
+    <th class="text-center">
+      <a href="<?= $addLink ?>">
+        <i class="fa fa-plus-square-o"></i>
+      </a>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <?php /** @var TravelCenterEntity $travelcenter */ ?>
+  <?php foreach ($this->travelcenterList as $travelcenter) : ?>
+    <?php
+    $showLink    = $this->url(
+        'travelcenter-backend/show', ['id' => $travelcenter->getId()], true
+    );
+    $editLink    = $this->url(
+        'travelcenter-backend/modify',
+        ['action' => 'edit', 'id' => $travelcenter->getId()], true
+    );
+    $deleteLink  = $this->url(
+        'travelcenter-backend/modify',
+        ['action' => 'delete', 'id' => $travelcenter->getId()], true
+    );
+    $approveLink = $this->url(
+        'travelcenter-backend/modify',
+        ['action' => 'approve', 'id' => $travelcenter->getId()], true
+    );
+    $blockLink   = $this->url(
+        'travelcenter-backend/modify',
+        ['action' => 'block', 'id' => $travelcenter->getId()], true
+    );
+    ?>
+    <tr>
+      <td>
+        <?= $this->translate(
+            'travelcenter_model_option_status_' . $travelcenter->getStatus()
+        ) ?>
+      </td>
+      <td>
+        <a href="<?= $showLink ?>">
+          <?= $travelcenter->getName() ?>
+        </a>
+      </td>
+      <td class="hidden-xs">
+        <?= $travelcenter->getEmail() ?>
+      </td>
+      <td class="hidden-xs">
+        <?= $travelcenter->getContact() ?>
+      </td>
+      <td class="hidden-xs">
+        <?= $this->dateFormat(
+            $travelcenter->getUpdated(),
+            IntlDateFormatter::MEDIUM,
+            IntlDateFormatter::MEDIUM
+        ) ?>
+      </td>
+      <td class="text-center">
+        <a href="<?= $showLink ?>" class="hidden-xs hidden-sm">
+          <i class="fa fa-file-text-o"></i>
+        </a>
+        <a href="<?= $editLink ?>">
+            <i class="fa fa-pencil"></i>
+        </a>
+        <a href="<?= $deleteLink ?>" class="hidden-xs hidden-sm">
+          <i class="fa fa-trash-o"></i>
+        </a>
+        <a href="<?= $approveLink ?>" class="visible-lg-inline">
+          <i class="fa fa-thumbs-o-up"></i>
+        </a>
+        <a href="<?= $blockLink ?>" class="visible-lg-inline">
+         <i class="fa fa-thumbs-o-down"></i>
+        </a>
+      </td>
+    </tr>
+  <?php endforeach; ?>
+  </tbody>
+</table>
+<nav class="text-center">
+  <?php
+  echo $this->paginationControl(
+      $this->travelcenterList,
+      'Sliding',
+      'pagination/page-navigation',
+      [
+        'route' => 'travelcenter-backend/page'
+      ]
+  );
+  ?>
+</nav>

@@ -2,15 +2,15 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertModel\Hydrator;
 
-use CompanyModel\Hydrator\CompanyHydrator;
-use CompanyModel\Hydrator\Strategy\CompanyEntityStrategy;
+use TravelCenterModel\Hydrator\TravelCenterHydrator;
+use TravelCenterModel\Hydrator\Strategy\TravelCenterEntityStrategy;
 use Zend\Hydrator\ClassMethods;
 use Zend\Hydrator\HydratorInterface;
 use Zend\Hydrator\Strategy\DateTimeFormatterStrategy;
@@ -23,7 +23,7 @@ use Zend\Hydrator\Strategy\DateTimeFormatterStrategy;
 class AdvertHydrator extends ClassMethods implements HydratorInterface
 {
     /**
-     * CompanyHydrator constructor.
+     * TravelCenterHydrator constructor.
      */
     public function __construct()
     {
@@ -38,8 +38,8 @@ class AdvertHydrator extends ClassMethods implements HydratorInterface
             new DateTimeFormatterStrategy('Y-m-d H:i:s')
         );
         $this->addStrategy(
-            'company',
-            new CompanyEntityStrategy(new CompanyHydrator())
+            'travelcenter',
+            new TravelCenterEntityStrategy(new TravelCenterHydrator())
         );
     }
 }

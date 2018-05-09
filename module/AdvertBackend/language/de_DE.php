@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -47,7 +47,7 @@ return [
     'advert_backend_label_updated'           => 'Geändert',
     'advert_backend_label_type'              => 'Typ',
     'advert_backend_label_status'            => 'Status',
-    'advert_backend_label_company'           => 'Unternehmen',
+    'advert_backend_label_travelcenter'      => 'Reisebüro',
     'advert_backend_label_location'          => 'Ort',
     'advert_backend_label_title'             => 'Titel',
     'advert_backend_label_text'              => 'Text',

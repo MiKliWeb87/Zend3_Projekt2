@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -38,7 +38,7 @@ class AdvertInputFilter extends InputFilter
     /**
      * @var array
      */
-    private $companyOptions;
+    private $travelcenterOptions;
 
     /**
      * @param array $statusOptions
@@ -57,11 +57,11 @@ class AdvertInputFilter extends InputFilter
     }
 
     /**
-     * @param array $companyOptions
+     * @param array $travelcenterOptions
      */
-    public function setCompanyOptions($companyOptions)
+    public function setTravelCenterOptions($travelcenterOptions)
     {
-        $this->companyOptions = $companyOptions;
+        $this->travelcenterOptions = $travelcenterOptions;
     }
 
     /**
@@ -119,7 +119,7 @@ class AdvertInputFilter extends InputFilter
 
         $this->add(
             [
-                'name'       => 'company',
+                'name'       => 'travelcenter',
                 'required'   => true,
                 'filters'    => [],
                 'validators' => [
@@ -127,14 +127,14 @@ class AdvertInputFilter extends InputFilter
                         'name'                   => NotEmpty::class,
                         'break_chain_on_failure' => true,
                         'options'                => [
-                            'message' => 'advert_model_message_company_missing',
+                            'message' => 'advert_model_message_travelcenter_missing',
                         ],
                     ],
                     [
                         'name'    => InArray::class,
                         'options' => [
-                            'haystack' => $this->companyOptions,
-                            'message'  => 'advert_model_message_company_invalid',
+                            'haystack' => $this->travelcenterOptions,
+                            'message'  => 'advert_model_message_travelcenter_invalid',
                         ],
                     ],
                 ],

@@ -2,15 +2,15 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace UserModel\Permissions;
 
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\CompanyRole;
+use UserModel\Permissions\Role\TravelCenterRole;
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Permissions\Acl\Acl;
 use Zend\Permissions\Acl\Acl as ZendAcl;
@@ -30,7 +30,7 @@ class UserAcl extends ZendAcl
     public function __construct(array $config = [])
     {
         $this->addRole(new GuestRole());
-        $this->addRole(new CompanyRole());
+        $this->addRole(new TravelCenterRole());
         $this->addRole(new AdminRole());
 
         $this->addConfig($config);

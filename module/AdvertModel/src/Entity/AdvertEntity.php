@@ -2,14 +2,14 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertModel\Entity;
 
-use CompanyModel\Entity\CompanyEntity;
+use TravelCenterModel\Entity\TravelCenterEntity;
 use DateTime;
 
 /**
@@ -45,9 +45,9 @@ class AdvertEntity
     private $type;
 
     /**
-     * @var CompanyEntity
+     * @var TravelCenterEntity
      */
-    private $company;
+    private $travelcenter;
 
     /**
      * @var string
@@ -153,19 +153,19 @@ class AdvertEntity
     }
 
     /**
-     * @return CompanyEntity
+     * @return TravelCenterEntity
      */
-    public function getCompany()
+    public function getTravelCenter()
     {
-        return $this->company;
+        return $this->travelcenter;
     }
 
     /**
-     * @param CompanyEntity $company
+     * @param TravelCenterEntity $travelcenter
      */
-    public function setCompany(CompanyEntity $company)
+    public function setTravelCenter(TravelCenterEntity $travelcenter)
     {
-        $this->company = $company;
+        $this->travelcenter = $travelcenter;
     }
 
     /**

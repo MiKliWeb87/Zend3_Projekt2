@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -27,9 +27,9 @@ interface AdvertInputFilterInterface
     public function setTypeOptions($typeOptions);
 
     /**
-     * @param array $companyOptions
+     * @param array $travelcenterOptions
      */
-    public function setCompanyOptions($companyOptions);
+    public function setTravelCenterOptions($travelcenterOptions);
 
     /**
      * Init input filter

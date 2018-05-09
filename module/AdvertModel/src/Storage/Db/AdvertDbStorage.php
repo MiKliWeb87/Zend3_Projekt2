@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -77,7 +77,7 @@ class AdvertDbStorage implements AdvertStorageInterface
             $select->where->equalTo('advert.type', $type);
         }
 
-        $select = $this->addCompanyJoinToSelect($select);
+        $select = $this->addTravelCenterJoinToSelect($select);
 
         $dbSelectAdapter = new DbSelect(
             $select,
@@ -104,7 +104,7 @@ class AdvertDbStorage implements AdvertStorageInterface
         $select = $this->tableGateway->getSql()->select();
         $select->where->equalTo('advert.id', $id);
 
-        $select = $this->addCompanyJoinToSelect($select);
+        $select = $this->addTravelCenterJoinToSelect($select);
 
         /** @var ResultSet $resultSet */
         $resultSet = $this->tableGateway->selectWith($select);
@@ -127,7 +127,7 @@ class AdvertDbStorage implements AdvertStorageInterface
         $select->order(new Expression('RAND()'));
         $select->limit(1);
 
-        $select = $this->addCompanyJoinToSelect($select);
+        $select = $this->addTravelCenterJoinToSelect($select);
 
         /** @var ResultSet $resultSet */
         $resultSet = $this->tableGateway->selectWith($select);
@@ -201,26 +201,26 @@ class AdvertDbStorage implements AdvertStorageInterface
     }
 
     /**
-     * Add company join to select
+     * Add travelcenter join to select
      *
      * @param Select $select
      *
      * @return Select
      */
-    private function addCompanyJoinToSelect(Select $select)
+    private function addTravelCenterJoinToSelect(Select $select)
     {
         $select->join(
-            'company',
-            'advert.company = company.id',
+            'travelcenter',
+            'advert.travelcenter = travelcenter.id',
             [
-                'company_id'         => 'id',
-                'company_registered' => 'registered',
-                'company_updated'    => 'updated',
-                'company_status'     => 'status',
-                'company_name'       => 'name',
-                'company_email'      => 'email',
-                'company_contact'    => 'contact',
-                'company_logo'       => 'logo',
+                'travelcenter_id'         => 'id',
+                'travelcenter_registered' => 'registered',
+                'travelcenter_updated'    => 'updated',
+                'travelcenter_status'     => 'status',
+                'travelcenter_name'       => 'name',
+                'travelcenter_email'      => 'email',
+                'travelcenter_contact'    => 'contact',
+                'travelcenter_logo'       => 'logo',
             ]
         );
 

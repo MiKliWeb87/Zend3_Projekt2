@@ -1,8 +1,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -122,11 +122,11 @@ footer a:hover {
     color : #ffffff;
 }
 
-.panel .company img {
+.panel .travelcenter img {
     margin-left : auto;
 }
 
-.panel .company {
+.panel .travelcenter {
     text-align : right;
 }
 
@@ -139,11 +139,11 @@ footer a:hover {
 }
 
 @media screen and (max-width : 991px) {
-    .panel .company img {
+    .panel .travelcenter img {
         margin : auto;
     }
 
-    .panel .company {
+    .panel .travelcenter {
         text-align : center;
     }
 }

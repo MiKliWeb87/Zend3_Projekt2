@@ -2,8 +2,8 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @author     Ralf Eggert <ralf@travello.de>
- * @link       https://github.com/zf3buch/zendframework-center
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
@@ -85,7 +85,7 @@ class UserRepository implements UserRepositoryInterface
         $nextId = $this->userStorage->nextId();
 
         $status = isset($data['status']) ? $data['status'] : 'new';
-        $role   = isset($data['role']) ? $data['role'] : 'company';
+        $role   = isset($data['role']) ? $data['role'] : 'travelcenter';
 
         $user = new UserEntity();
         $user->setId($nextId);

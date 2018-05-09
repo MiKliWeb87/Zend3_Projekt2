@@ -1,0 +1,108 @@
+<?php
+/**
+ * ZF3 book Zend Framework Center Example Application
+ *
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink 
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+use TravelCenterBackend\Form\TravelCenterFormInterface;
+use TravelCenterModel\Entity\TravelCenterEntity;
+
+/** @var TravelCenterFormInterface $form */
+$form = $this->travelcenterForm;
+
+/** @var TravelCenterEntity $travelcenter */
+$travelcenter = $this->travelcenter;
+
+$listLink    = $this->url('travelcenter-backend', [], true);
+$showLink    = $this->url(
+    'travelcenter-backend/show', ['id' => $travelcenter->getId()], true
+);
+$editLink    = $this->url(
+    'travelcenter-backend/modify', ['action' => 'edit', 'id' => $travelcenter->getId()], true
+);
+$deleteLink  = $this->url(
+    'travelcenter-backend/modify', ['action' => 'delete', 'id' => $travelcenter->getId()], true
+);
+$approveLink = $this->url(
+    'travelcenter-backend/modify', ['action' => 'approve', 'id' => $travelcenter->getId()], true
+);
+$blockLink   = $this->url(
+    'travelcenter-backend/modify', ['action' => 'block', 'id' => $travelcenter->getId()], true
+);
+
+$this->headTitle('travelcenter_backend_title_display_edit');
+$this->h1('travelcenter_backend_h1_display_edit');
+?>
+<p>
+  <a href="<?= $showLink ?>" class="btn btn-default">
+    <i class="fa fa-file-text-o"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('travelcenter_backend_action_show_short') ?>
+    </span>
+  </a>
+  <a href="<?= $editLink ?>" class="btn btn-primary">
+    <i class="fa fa-pencil"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('travelcenter_backend_action_edit_short') ?>
+    </span>
+  </a>
+  <a href="<?= $deleteLink ?>" class="btn btn-default">
+    <i class="fa fa-trash-o"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('travelcenter_backend_action_delete_short') ?>
+    </span>
+  </a>
+  <a href="<?= $approveLink ?>" class="btn btn-default">
+    <i class="fa fa-thumbs-o-up"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('travelcenter_backend_action_approve_short') ?>
+    </span>
+  </a>
+  <a href="<?= $blockLink ?>" class="btn btn-default">
+    <i class="fa fa-thumbs-o-down"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('travelcenter_backend_action_block_short') ?>
+    </span>
+  </a>
+  <a href="<?= $listLink ?>" class="btn btn-default">
+    <i class="fa fa-list"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('travelcenter_backend_action_overview') ?>
+    </span>
+  </a>
+</p>
+<?php
+$staticElements = [
+    [
+        'label' => $this->translate('travelcenter_backend_label_created'),
+        'value' => $this->dateFormat(
+            $travelcenter->getRegistered(),
+            IntlDateFormatter::MEDIUM,
+            IntlDateFormatter::MEDIUM
+        ),
+    ],
+    [
+        'label' => $this->translate('travelcenter_backend_label_updated'),
+        'value' => $this->dateFormat(
+            $travelcenter->getUpdated(),
+            IntlDateFormatter::MEDIUM,
+            IntlDateFormatter::MEDIUM
+        ),
+    ],
+    [
+        'label' => $this->translate('travelcenter_backend_label_status'),
+        'value' => $this->translate(
+            'travelcenter_model_option_status_' . $travelcenter->getStatus()
+        ),
+    ],
+];
+?>
+<div class="well" style="position: relative">
+  <div style="position: absolute; right: 20px;">
+    <img src="<?= $travelcenter->getLogo() ?>">
+  </div>
+  <?= $this->bootstrapForm($form, $staticElements); ?>
+</div>
