@@ -8,10 +8,10 @@
  */
 
 return [
-  /*  'db'              => [
+    'db'              => [
         'driver' => 'pdo',
-        'dsn'    => 'mysql:dbname=zf-center;host=localhost;charset=utf8',
-        'user'   => 'zf-center',
-        'pass'   => 'geheim',
-    ], */
+        'dsn'    => 'mysql:dbname=zf3_mirco_p2;host=localhost;charset=utf8',
+        'user'   => 'root',
+        'pass'   => '',
+    ], 
 ];
