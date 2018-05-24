@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 use AdvertModel\Entity\AdvertEntity;
@@ -23,7 +23,7 @@ $this->h1('advert_backend_h1_display_index');
     <th><?= $this->translate('advert_backend_label_status') ?></th>
     <th><?= $this->translate('advert_backend_label_title') ?></th>
     <th class="hidden-xs">
-      <?= $this->translate('advert_backend_label_travelcenter') ?>
+      <?= $this->translate('advert_backend_label_company') ?>
     </th>
     <th class="hidden-xs">
       <?= $this->translate('advert_backend_label_location') ?>
@@ -73,7 +73,7 @@ $this->h1('advert_backend_h1_display_index');
         </a>
       </td>
       <td class="hidden-xs">
-        <?= $advert->getTravelCenter()->getName() ?>
+        <?= $advert->getCompany()->getName() ?>
       </td>
       <td class="hidden-xs">
         <?= $advert->getLocation() ?>

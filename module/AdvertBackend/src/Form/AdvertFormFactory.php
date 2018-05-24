@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertBackend\Form;
@@ -12,7 +12,7 @@ namespace AdvertBackend\Form;
 use AdvertModel\Config\AdvertConfigInterface;
 use AdvertModel\Hydrator\AdvertHydrator;
 use AdvertModel\InputFilter\AdvertInputFilter;
-use TravelCenterModel\Repository\TravelCenterRepositoryInterface;
+use CompanyModel\Repository\CompanyRepositoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\Hydrator\HydratorPluginManager;
 use Zend\InputFilter\InputFilterInterface;
@@ -54,9 +54,9 @@ class AdvertFormFactory implements FactoryInterface
         /** @var AdvertConfigInterface $advertConfig */
         $advertConfig = $container->get(AdvertConfigInterface::class);
 
-        /** @var TravelCenterRepositoryInterface $travelcenterRepository */
-        $travelcenterRepository = $container->get(
-            TravelCenterRepositoryInterface::class
+        /** @var CompanyRepositoryInterface $companyRepository */
+        $companyRepository = $container->get(
+            CompanyRepositoryInterface::class
         );
 
         $form = new AdvertForm();
@@ -64,7 +64,7 @@ class AdvertFormFactory implements FactoryInterface
         $form->setInputFilter($advertInputFilter);
         $form->setStatusOptions($advertConfig->getStatusOptions());
         $form->setTypeOptions($advertConfig->getTypeOptions());
-        $form->setTravelCenterOptions($travelcenterRepository->getTravelCenterOptions());
+        $form->setCompanyOptions($companyRepository->getCompanyOptions());
 
         return $form;
     }

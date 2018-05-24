@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 use AdvertModel\Entity\AdvertEntity;
@@ -39,25 +39,25 @@ $this->h1($advert->getTitle());
       <strong><?= $advert->getTitle(); ?></strong>
     </div>
     <div class="right-text">
-      <?= $advert->getTravelCenter()->getName() ?>
+      <?= $advert->getCompany()->getName() ?>
     </div>
   </div>
   <div class="panel-body">
     <div class="col-sm-9">
       <p><?= $advert->getText(); ?></p>
     </div>
-    <div class="col-sm-3 travelcenter">
+    <div class="col-sm-3 company">
       <p>
         <img class="img-responsive"
-             src="<?= $advert->getTravelCenter()->getLogo() ?>">
+             src="<?= $advert->getCompany()->getLogo() ?>">
       </p>
       <h5>
         <strong>
           <?= $this->translate('advert_frontend_label_type_contact'); ?>
         </strong>
       </h5>
-      <p><?= $advert->getTravelCenter()->getContact() ?></p>
-      <p><?= $advert->getTravelCenter()->getEmail() ?></p>
+      <p><?= $advert->getCompany()->getContact() ?></p>
+      <p><?= $advert->getCompany()->getEmail() ?></p>
     </div>
   </div>
   <div class="panel-footer clearfix">

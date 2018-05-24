@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 use AdvertFrontend\Controller\DisplayController;
@@ -14,7 +14,7 @@ use AdvertFrontend\Controller\ModifyControllerFactory;
 use AdvertFrontend\Permissions\Resource\DisplayResource;
 use AdvertFrontend\Permissions\Resource\ModifyResource;
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\TravelCenterRole;
+use UserModel\Permissions\Role\CompanyRole;
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Navigation\Page\Mvc;
 use Zend\Permissions\Acl\Acl;
@@ -222,7 +222,7 @@ return [
                 Acl::TYPE_ALLOW => null,
             ],
         ],
-        TravelCenterRole::NAME => [
+        CompanyRole::NAME => [
             DisplayResource::NAME => [
                 Acl::TYPE_ALLOW => null,
             ],

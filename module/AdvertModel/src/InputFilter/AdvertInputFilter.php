@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertModel\InputFilter;
@@ -38,7 +38,7 @@ class AdvertInputFilter extends InputFilter
     /**
      * @var array
      */
-    private $travelcenterOptions;
+    private $companyOptions;
 
     /**
      * @param array $statusOptions
@@ -57,11 +57,11 @@ class AdvertInputFilter extends InputFilter
     }
 
     /**
-     * @param array $travelcenterOptions
+     * @param array $companyOptions
      */
-    public function setTravelCenterOptions($travelcenterOptions)
+    public function setCompanyOptions($companyOptions)
     {
-        $this->travelcenterOptions = $travelcenterOptions;
+        $this->companyOptions = $companyOptions;
     }
 
     /**
@@ -119,7 +119,7 @@ class AdvertInputFilter extends InputFilter
 
         $this->add(
             [
-                'name'       => 'travelcenter',
+                'name'       => 'company',
                 'required'   => true,
                 'filters'    => [],
                 'validators' => [
@@ -127,14 +127,14 @@ class AdvertInputFilter extends InputFilter
                         'name'                   => NotEmpty::class,
                         'break_chain_on_failure' => true,
                         'options'                => [
-                            'message' => 'advert_model_message_travelcenter_missing',
+                            'message' => 'advert_model_message_company_missing',
                         ],
                     ],
                     [
                         'name'    => InArray::class,
                         'options' => [
-                            'haystack' => $this->travelcenterOptions,
-                            'message'  => 'advert_model_message_travelcenter_invalid',
+                            'haystack' => $this->companyOptions,
+                            'message'  => 'advert_model_message_company_invalid',
                         ],
                     ],
                 ],

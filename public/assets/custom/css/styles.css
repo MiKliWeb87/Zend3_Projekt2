@@ -122,11 +122,11 @@ footer a:hover {
     color : #ffffff;
 }
 
-.panel .travelcenter img {
+.panel .company img {
     margin-left : auto;
 }
 
-.panel .travelcenter {
+.panel .company {
     text-align : right;
 }
 
@@ -139,11 +139,11 @@ footer a:hover {
 }
 
 @media screen and (max-width : 991px) {
-    .panel .travelcenter img {
+    .panel .company img {
         margin : auto;
     }
 
-    .panel .travelcenter {
+    .panel .company {
         text-align : center;
     }
 }

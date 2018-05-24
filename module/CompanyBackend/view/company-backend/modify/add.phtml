@@ -1,0 +1,30 @@
+<?php
+/**
+ * ZF3 book Zend Framework Center Example Application
+ *
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+use CompanyBackend\Form\CompanyFormInterface;
+
+/** @var CompanyFormInterface $form */
+$form = $this->companyForm;
+
+$listLink = $this->url('company-backend', [], true);
+
+$this->headTitle('company_backend_title_display_add');
+$this->h1('company_backend_h1_display_add');
+?>
+<p>
+  <a href="<?= $listLink ?>" class="btn btn-default">
+    <i class="fa fa-list"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('company_backend_action_overview') ?>
+    </span>
+  </a>
+</p>
+<div class="well">
+  <?= $this->bootstrapForm($form); ?>
+</div>

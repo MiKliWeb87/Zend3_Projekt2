@@ -2,16 +2,16 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertModel\Repository;
 
 use AdvertModel\Entity\AdvertEntity;
 use AdvertModel\Storage\AdvertStorageInterface;
-use TravelCenterModel\Entity\TravelCenterEntity;
+use CompanyModel\Entity\CompanyEntity;
 use DateTime;
 use Zend\Paginator\Paginator;
 
@@ -88,8 +88,8 @@ class AdvertRepository implements AdvertRepositoryInterface
      */
     public function createAdvertFromData(array $data = [])
     {
-        $travelcenter = new TravelCenterEntity();
-        $travelcenter->setId($data['travelcenter']);
+        $company = new CompanyEntity();
+        $company->setId($data['company']);
 
         $nextId = $this->advertStorage->nextId();
 
@@ -99,7 +99,7 @@ class AdvertRepository implements AdvertRepositoryInterface
         $advert->setUpdated(new DateTime());
         $advert->setStatus($data['status']);
         $advert->setType($data['type']);
-        $advert->setTravelCenter($travelcenter);
+        $advert->setCompany($company);
         $advert->setTitle($data['title']);
         $advert->setText($data['text']);
         $advert->setLocation($data['location']);

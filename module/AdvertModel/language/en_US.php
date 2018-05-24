@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 return [
@@ -13,8 +13,8 @@ return [
     'advert_model_message_status_invalid'   => 'Invalid status!',
     'advert_model_message_type_missing'     => 'Please enter advert type!',
     'advert_model_message_type_invalid'     => 'Invalid advert type!',
-    'advert_model_message_travelcenter_missing'  => 'Please enter travelcenter!',
-    'advert_model_message_travelcenter_invalid'  => 'Unknown travelcenter!',
+    'advert_model_message_company_missing'  => 'Please enter company!',
+    'advert_model_message_company_invalid'  => 'Unknown company!',
     'advert_model_message_title_missing'    => 'Please enter advert title!',
     'advert_model_message_title_invalid'    => 'Only %min%-%max% chars allowed!',
     'advert_model_message_text_missing'     => 'Please enter advert text!',

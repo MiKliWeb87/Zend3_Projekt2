@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertModel\Storage\Db;
@@ -77,7 +77,7 @@ class AdvertDbStorage implements AdvertStorageInterface
             $select->where->equalTo('advert.type', $type);
         }
 
-        $select = $this->addTravelCenterJoinToSelect($select);
+        $select = $this->addCompanyJoinToSelect($select);
 
         $dbSelectAdapter = new DbSelect(
             $select,
@@ -104,7 +104,7 @@ class AdvertDbStorage implements AdvertStorageInterface
         $select = $this->tableGateway->getSql()->select();
         $select->where->equalTo('advert.id', $id);
 
-        $select = $this->addTravelCenterJoinToSelect($select);
+        $select = $this->addCompanyJoinToSelect($select);
 
         /** @var ResultSet $resultSet */
         $resultSet = $this->tableGateway->selectWith($select);
@@ -127,7 +127,7 @@ class AdvertDbStorage implements AdvertStorageInterface
         $select->order(new Expression('RAND()'));
         $select->limit(1);
 
-        $select = $this->addTravelCenterJoinToSelect($select);
+        $select = $this->addCompanyJoinToSelect($select);
 
         /** @var ResultSet $resultSet */
         $resultSet = $this->tableGateway->selectWith($select);
@@ -201,26 +201,26 @@ class AdvertDbStorage implements AdvertStorageInterface
     }
 
     /**
-     * Add travelcenter join to select
+     * Add company join to select
      *
      * @param Select $select
      *
      * @return Select
      */
-    private function addTravelCenterJoinToSelect(Select $select)
+    private function addCompanyJoinToSelect(Select $select)
     {
         $select->join(
-            'travelcenter',
-            'advert.travelcenter = travelcenter.id',
+            'company',
+            'advert.company = company.id',
             [
-                'travelcenter_id'         => 'id',
-                'travelcenter_registered' => 'registered',
-                'travelcenter_updated'    => 'updated',
-                'travelcenter_status'     => 'status',
-                'travelcenter_name'       => 'name',
-                'travelcenter_email'      => 'email',
-                'travelcenter_contact'    => 'contact',
-                'travelcenter_logo'       => 'logo',
+                'company_id'         => 'id',
+                'company_registered' => 'registered',
+                'company_updated'    => 'updated',
+                'company_status'     => 'status',
+                'company_name'       => 'name',
+                'company_email'      => 'email',
+                'company_contact'    => 'contact',
+                'company_logo'       => 'logo',
             ]
         );
 

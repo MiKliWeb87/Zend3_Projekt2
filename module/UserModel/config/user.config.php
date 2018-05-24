@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 
@@ -15,7 +15,7 @@ return [
         'blocked'  => 'user_model_option_status_blocked',
     ],
     'role_options'   => [
-        'travelcenter' => 'user_model_option_role_travelcenter',
+        'company' => 'user_model_option_role_company',
         'admin'   => 'user_model_option_role_admin',
     ],
 ];

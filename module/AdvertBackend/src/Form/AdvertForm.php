@@ -2,9 +2,9 @@
 /**
  * ZF3 book Zend Framework Center Example Application
  *
- * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author	   		   Mirco Klink  * @author	   		   Mirco Klink
- * @linkSkeleton       https://github.com/zf3buch/zendframework-center
- * @link 			 https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ * @author     Ralf Eggert <ralf@travello.de>
+ * @link       https://github.com/zf3buch/zendframework-center
+ * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
 namespace AdvertBackend\Form;
@@ -36,7 +36,7 @@ class AdvertForm extends Form implements AdvertFormInterface
     /**
      * @var array
      */
-    private $travelcenterOptions;
+    private $companyOptions;
 
     /**
      * @param array $statusOptions
@@ -55,11 +55,11 @@ class AdvertForm extends Form implements AdvertFormInterface
     }
 
     /**
-     * @param array $travelcenterOptions
+     * @param array $companyOptions
      */
-    public function setTravelCenterOptions($travelcenterOptions)
+    public function setCompanyOptions($companyOptions)
     {
-        $this->travelcenterOptions = $travelcenterOptions;
+        $this->companyOptions = $companyOptions;
     }
 
     /**
@@ -108,13 +108,13 @@ class AdvertForm extends Form implements AdvertFormInterface
         $this->add(
             [
                 'type'       => Select::class,
-                'name'       => 'travelcenter',
+                'name'       => 'company',
                 'attributes' => [
                     'class' => 'form-control',
                 ],
                 'options'    => [
-                    'value_options' => $this->travelcenterOptions,
-                    'label'         => 'advert_backend_label_travelcenter',
+                    'value_options' => $this->companyOptions,
+                    'label'         => 'advert_backend_label_company',
                 ],
             ]
         );
@@ -186,8 +186,8 @@ class AdvertForm extends Form implements AdvertFormInterface
             $this->remove('type');
         }
 
-        if ($this->has('travelcenter')) {
-            $this->remove('travelcenter');
+        if ($this->has('company')) {
+            $this->remove('company');
         }
 
         $this->setValidationGroup(array_keys($this->getElements()));
