@@ -15,7 +15,7 @@ return [
     ],
 
     'type_options' => [
-        'job'     => 'advert_model_option_type_job',
-        'project' => 'advert_model_option_type_project',
+        'holiday'     => 'advert_model_option_type_holiday',
+        'shortholiday' => 'advert_model_option_type_shortholiday',
     ],
 ];

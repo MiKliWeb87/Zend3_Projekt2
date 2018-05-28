@@ -12,16 +12,16 @@ use AdvertModel\Entity\AdvertEntity;
 /** @var AdvertEntity $advert */
 $advert = $this->advert;
 
-if ($advert->getType() == 'job') {
+if ($advert->getType() == 'holiday') {
   $color         = 'primary';
-  $advertMessage = 'advert_frontend_message_type_job';
-  $listLink      = $this->url('advert-job', [], true);
-  $listText      = 'advert_frontend_action_back_jobs';
+  $advertMessage = 'advert_frontend_message_type_holiday';
+  $listLink      = $this->url('advert-holiday', [], true);
+  $listText      = 'advert_frontend_action_back_holidays';
 } else {
   $color         = 'success';
-  $advertMessage = 'advert_frontend_message_type_project';
-  $listLink      = $this->url('advert-project', [], true);
-  $listText      = 'advert_frontend_action_back_projects';
+  $advertMessage = 'advert_frontend_message_type_shortholiday';
+  $listLink      = $this->url('advert-shortholiday', [], true);
+  $listText      = 'advert_frontend_action_back_shortholidays';
 }
 
 $this->headTitle($advert->getTitle());

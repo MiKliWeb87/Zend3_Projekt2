@@ -38,14 +38,14 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
-        $randomJob     = $this->advertRepository->getRandomAdvert('job');
-        $randomProject = $this->advertRepository->getRandomAdvert(
-            'project'
+        $randomHoliday     = $this->advertRepository->getRandomAdvert('holiday');
+        $randomShortholiday = $this->advertRepository->getRandomAdvert(
+            'shortholiday'
         );
 
         $viewModel = new ViewModel();
-        $viewModel->setVariable('randomJob', $randomJob);
-        $viewModel->setVariable('randomProject', $randomProject);
+        $viewModel->setVariable('randomHoliday', $randomHoliday);
+        $viewModel->setVariable('randomShortholiday', $randomShortholiday);
 
         return $viewModel;
     }

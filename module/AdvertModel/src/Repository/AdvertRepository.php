@@ -68,13 +68,13 @@ class AdvertRepository implements AdvertRepositoryInterface
     }
 
     /**
-     * Get a random job advert
+     * Get a random holiday advert
      *
      * @param string $type
      *
      * @return array|bool
      */
-    public function getRandomAdvert($type = 'job')
+    public function getRandomAdvert($type = 'holiday')
     {
         return $this->advertStorage->fetchRandomAdvertEntity($type);
     }

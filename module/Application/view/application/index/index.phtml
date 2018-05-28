@@ -9,31 +9,31 @@
 
 use AdvertModel\Entity\AdvertEntity;
 
-/** @var AdvertEntity $job */
-$job     = $this->randomJob;
+/** @var AdvertEntity $holiday */
+$holiday     = $this->randomHoliday;
 
-/** @var AdvertEntity $project */
-$project = $this->randomProject;
+/** @var AdvertEntity $shortholiday */
+$shortholiday = $this->randomShortholiday;
 
-$jobText = strip_tags($job->getText());
-$jobText = implode(
-    ' ', array_slice(explode(' ', $jobText), 0, 50)
+$holidayText = strip_tags($holiday->getText());
+$holidayText = implode(
+    ' ', array_slice(explode(' ', $holidayText), 0, 50)
 );
 
-$projectText = strip_tags($project->getText());
-$projectText = implode(
-    ' ', array_slice(explode(' ', $projectText), 0, 50)
+$shortholidayText = strip_tags($shortholiday->getText());
+$shortholidayText = implode(
+    ' ', array_slice(explode(' ', $shortholidayText), 0, 50)
 );
 
-$jobDetailLink = $this->url('advert-job/detail', ['id' => $job->getId()], true);
+$holidayDetailLink = $this->url('advert-holiday/detail', ['id' => $holiday->getId()], true);
 
-$projectDetailLink = $this->url(
-    'advert-project/detail', ['id' => $project->getId()], true
+$shortholidayDetailLink = $this->url(
+    'advert-shortholiday/detail', ['id' => $shortholiday->getId()], true
 );
 
-$jobListLink = $this->url('advert-job', [], true);
+$holidayListLink = $this->url('advert-holiday', [], true);
 
-$projectListLink = $this->url('advert-project', [], true);
+$shortholidayListLink = $this->url('advert-shortholiday', [], true);
 
 $this->h1('application_h1_index_index');
 ?>
@@ -41,26 +41,26 @@ $this->h1('application_h1_index_index');
 <div class="row">
   <div class="col-sm-6">
     <h2>
-      <a href="<?= $jobListLink; ?>">
-        <?= $this->translate('application_h2_jobs') ?>
+      <a href="<?= $holidayListLink; ?>">
+        <?= $this->translate('application_h2_holidays') ?>
       </a>
     </h2>
 
     <div class="panel panel-primary">
       <div class="panel-heading clearfix">
         <strong>
-          <a href="<?= $jobDetailLink; ?>"><?= $job->getTitle(); ?></a>
+          <a href="<?= $holidayDetailLink; ?>"><?= $holiday->getTitle(); ?></a>
         </strong>
       </div>
       <div class="panel-body">
         <p>
-          <img src="<?= $job->getCompany()->getLogo() ?>"
+          <img src="<?= $holiday->getCompany()->getLogo() ?>"
                class="img-responsive center-block">
         </p>
-        <p><?= $jobText; ?> ...</p>
+        <p><?= $holidayText; ?> ...</p>
         <p class="text-center">
-          <a href="<?= $jobDetailLink ?>" class="btn btn-primary">
-            <?= $this->translate('advert_frontend_action_show_job'); ?>
+          <a href="<?= $holidayDetailLink ?>" class="btn btn-primary">
+            <?= $this->translate('advert_frontend_action_show_holiday'); ?>
           </a>
         </p>
       </div>
@@ -68,8 +68,8 @@ $this->h1('application_h1_index_index');
         <div class="left-text">
           <div class="label label-primary">
             <?= sprintf(
-                $this->translate('advert_frontend_message_type_job'),
-                $job->getLocation()
+                $this->translate('advert_frontend_message_type_holiday'),
+                $holiday->getLocation()
             ); ?>
           </div>
         </div>
@@ -77,42 +77,42 @@ $this->h1('application_h1_index_index');
           <div class="label label-primary">
             <?= sprintf(
                 $this->translate('advert_frontend_label_last_update'),
-                $project->getUpdated()->format('d.m.Y H:i:s')
+                $shortholiday->getUpdated()->format('d.m.Y H:i:s')
             ); ?>
           </div>
         </div>
       </div>
     </div>
     <p class="text-center">
-      <a href="<?= $jobListLink; ?>" class="btn btn-primary">
-        <?= $this->translate('advert_frontend_action_all_jobs') ?>
+      <a href="<?= $holidayListLink; ?>" class="btn btn-primary">
+        <?= $this->translate('advert_frontend_action_all_holidays') ?>
       </a>
     </p>
   </div>
   <div class="col-sm-6">
     <h2>
-      <a href="<?= $projectListLink; ?>">
-        <?= $this->translate('application_h2_projects') ?>
+      <a href="<?= $shortholidayListLink; ?>">
+        <?= $this->translate('application_h2_shortholidays') ?>
       </a>
     </h2>
 
     <div class="panel panel-success">
       <div class="panel-heading clearfix">
         <strong>
-          <a href="<?= $projectDetailLink; ?>">
-            <?= $project->getTitle(); ?>
+          <a href="<?= $shortholidayDetailLink; ?>">
+            <?= $shortholiday->getTitle(); ?>
           </a>
         </strong>
       </div>
       <div class="panel-body">
         <p>
-          <img src="<?= $project->getCompany()->getLogo() ?>"
+          <img src="<?= $shortholiday->getCompany()->getLogo() ?>"
                class="img-responsive center-block">
         </p>
-        <p><?= $projectText; ?> ...</p>
+        <p><?= $shortholidayText; ?> ...</p>
         <p class="text-center">
-          <a href="<?= $projectDetailLink ?>" class="btn btn-success">
-            <?= $this->translate('advert_frontend_action_show_project'); ?>
+          <a href="<?= $shortholidayDetailLink ?>" class="btn btn-success">
+            <?= $this->translate('advert_frontend_action_show_shortholiday'); ?>
           </a>
         </p>
       </div>
@@ -120,8 +120,8 @@ $this->h1('application_h1_index_index');
         <div class="left-text">
           <div class="label label-success">
             <?= sprintf(
-                $this->translate('advert_frontend_message_type_project'),
-                $project->getLocation()
+                $this->translate('advert_frontend_message_type_shortholiday'),
+                $shortholiday->getLocation()
             ); ?>
           </div>
         </div>
@@ -129,15 +129,15 @@ $this->h1('application_h1_index_index');
           <div class="label label-success">
             <?= sprintf(
                 $this->translate('advert_frontend_label_last_update'),
-                $project->getUpdated()->format('d.m.Y H:i:s')
+                $shortholiday->getUpdated()->format('d.m.Y H:i:s')
             ); ?>
           </div>
         </div>
       </div>
     </div>
     <p class="text-center">
-      <a href="<?= $projectListLink; ?>" class="btn btn-success">
-        <?= $this->translate('advert_frontend_action_all_projects') ?>
+      <a href="<?= $shortholidayListLink; ?>" class="btn btn-success">
+        <?= $this->translate('advert_frontend_action_all_shortholidays') ?>
       </a>
     </p>
   </div>

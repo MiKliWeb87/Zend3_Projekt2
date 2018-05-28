@@ -14,24 +14,24 @@ return [
     'application_navigation_english'                => 'English',
 
     // title texts
-    'application_title_default'                     => 'Zend Framework Center',
+    'application_title_default'                     => 'Zend Framework Holiday Center',
     'application_title_error_404'                   => 'Page not found',
     'application_title_error_index'                 => 'Server error',
 
     // heading texts
-    'application_h1_index_index'                    => 'Welcome to the Zend Framework Center!',
+    'application_h1_index_index'                    => 'Welcome to the Zend Framework Holiday Center!',
     'application_h1_error_404'                      => 'Page not found',
     'application_h2_error_404'                      => 'The requested page could not be found',
     'application_h1_error_index'                    => 'Server error',
     'application_h2_error_index'                    => 'An internal server error has occured.',
-    'application_h2_jobs'                           => 'Jobs',
-    'application_h2_projects'                       => 'Projects',
+    'application_h2_holidays'                           => 'Holidays',
+    'application_h2_shortholidays'                       => 'Short holidays',
     'application_h4_footer_skeleton'                => 'Zend Framework Center',
     'application_h4_footer_links1'                  => 'Zend Framework Links',
     'application_h4_footer_links2'                  => 'ZF3buch Links',
 
     // message texts
-    'application_message_footer_skeleton'           => 'The demo project is based on the extended <strong>MVC Skeleton Application</strong>, which is published with the ZF3 book, to enable you the start Zend Framework 3 applications faster. This demo project is only an example, all the job and project opportunities do <strong>not</strong> really exist.',
+    'application_message_footer_skeleton'           => 'The demo shortholiday is based on the extended <strong>MVC Skeleton Application</strong>, which is published with the ZF3 book, to enable you the start Zend Framework 3 applications faster. This demo shortholiday is only an example, all the holiday and shortholiday opportunities do <strong>not</strong> really exist.',
     'application_message_controller_not_dispatched' => 'The requested controller was unable to dispatch the request.',
     'application_message_controller_not_found'      => 'The requested controller could not be mapped to an existing controller class.',
     'application_message_controller_invalid'        => 'The requested controller was not dispatchable.',

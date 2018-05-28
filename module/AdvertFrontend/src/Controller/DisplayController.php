@@ -39,7 +39,7 @@ class DisplayController extends AbstractActionController
     public function indexAction()
     {
         $page = $this->params()->fromRoute('page', 1);
-        $type = $this->params()->fromRoute('type', 'job');
+        $type = $this->params()->fromRoute('type', 'holiday');
 
         $advertList = $this->advertRepository->getAdvertsByPage(
             $type, true, $page
@@ -62,7 +62,7 @@ class DisplayController extends AbstractActionController
     public function detailAction()
     {
         $id = $this->params()->fromRoute('id');
-        $type = $this->params()->fromRoute('type', 'job');
+        $type = $this->params()->fromRoute('type', 'holiday');
 
         if (!$id) {
             return $this->redirect()->toRoute('advert-' . $type, [], true);

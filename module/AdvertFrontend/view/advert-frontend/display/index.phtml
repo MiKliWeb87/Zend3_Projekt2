@@ -9,18 +9,18 @@
 
 use AdvertModel\Entity\AdvertEntity;
 
-if ($this->type == 'job') {
+if ($this->type == 'holiday') {
   $color         = 'primary';
-  $advertButton  = 'advert_frontend_action_show_job';
-  $advertMessage = 'advert_frontend_message_type_job';
-  $headTitleText = 'advert_frontend_title_display_jobs';
-  $h1Text        = 'advert_frontend_h1_display_jobs';
+  $advertButton  = 'advert_frontend_action_show_holiday';
+  $advertMessage = 'advert_frontend_message_type_holiday';
+  $headTitleText = 'advert_frontend_title_display_holidays';
+  $h1Text        = 'advert_frontend_h1_display_holidays';
 } else {
   $color         = 'success';
-  $advertButton  = 'advert_frontend_action_show_project';
-  $advertMessage = 'advert_frontend_message_type_project';
-  $headTitleText = 'advert_frontend_title_display_projects';
-  $h1Text        = 'advert_frontend_h1_display_projects';
+  $advertButton  = 'advert_frontend_action_show_shortholiday';
+  $advertMessage = 'advert_frontend_message_type_shortholiday';
+  $headTitleText = 'advert_frontend_title_display_shortholidays';
+  $h1Text        = 'advert_frontend_h1_display_shortholidays';
 }
 
 $listLink = $this->url('home', [], true);

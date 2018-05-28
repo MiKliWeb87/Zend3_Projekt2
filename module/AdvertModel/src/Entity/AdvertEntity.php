@@ -145,8 +145,8 @@ class AdvertEntity
      */
     public function setType($type)
     {
-        if (!in_array($type, ['job', 'project'])) {
-            $type = 'job';
+        if (!in_array($type, ['holiday', 'shortholiday'])) {
+            $type = 'holiday';
         }
 
         $this->type = trim($type);

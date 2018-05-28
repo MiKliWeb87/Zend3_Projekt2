@@ -23,14 +23,14 @@ use Zend\Router\Http\Segment;
 return [
     'router' => [
         'routes' => [
-            'advert-job'     => [
+            'advert-holiday'     => [
                 'type'          => Segment::class,
                 'options'       => [
-                    'route'       => '/:lang/job',
+                    'route'       => '/:lang/holiday',
                     'defaults'    => [
                         'controller' => DisplayController::class,
                         'action'     => 'index',
-                        'type'       => 'job',
+                        'type'       => 'holiday',
                         'lang'       => 'de',
                     ],
                     'constraints' => [
@@ -75,14 +75,14 @@ return [
                     ],
                 ],
             ],
-            'advert-project' => [
+            'advert-shortholiday' => [
                 'type'          => Segment::class,
                 'options'       => [
-                    'route'       => '/:lang/project',
+                    'route'       => '/:lang/shortholiday',
                     'defaults'    => [
                         'controller' => DisplayController::class,
                         'action'     => 'index',
-                        'type'       => 'project',
+                        'type'       => 'shortholiday',
                         'lang'       => 'de',
                     ],
                     'constraints' => [
@@ -147,11 +147,11 @@ return [
 
     'navigation' => [
         'default' => [
-            'job'     => [
+            'holiday'     => [
                 'type'          => Mvc::class,
                 'order'         => '200',
-                'label'         => 'advert_frontend_navigation_jobs',
-                'route'         => 'advert-job',
+                'label'         => 'advert_frontend_navigation_holidays',
+                'route'         => 'advert-holiday',
                 'controller'    => DisplayController::class,
                 'action'        => 'index',
                 'useRouteMatch' => true,
@@ -160,26 +160,26 @@ return [
                 'pages'         => [
                     'edit' => [
                         'type'    => Mvc::class,
-                        'route'   => 'advert-job/modify',
+                        'route'   => 'advert-holiday/modify',
                         'visible' => false,
                     ],
                     'show' => [
                         'type'    => Mvc::class,
-                        'route'   => 'advert-job/detail',
+                        'route'   => 'advert-holiday/detail',
                         'visible' => false,
                     ],
                     'page' => [
                         'type'    => Mvc::class,
-                        'route'   => 'advert-job/page',
+                        'route'   => 'advert-holiday/page',
                         'visible' => false,
                     ],
                 ],
             ],
-            'project' => [
+            'shortholiday' => [
                 'type'          => Mvc::class,
                 'order'         => '300',
-                'label'         => 'advert_frontend_navigation_projects',
-                'route'         => 'advert-project',
+                'label'         => 'advert_frontend_navigation_shortholidays',
+                'route'         => 'advert-shortholiday',
                 'controller'    => DisplayController::class,
                 'action'        => 'index',
                 'useRouteMatch' => true,
@@ -188,17 +188,17 @@ return [
                 'pages'         => [
                     'edit' => [
                         'type'    => Mvc::class,
-                        'route'   => 'advert-project/modify',
+                        'route'   => 'advert-shortholiday/modify',
                         'visible' => false,
                     ],
                     'show' => [
                         'type'    => Mvc::class,
-                        'route'   => 'advert-project/detail',
+                        'route'   => 'advert-shortholiday/detail',
                         'visible' => false,
                     ],
                     'page' => [
                         'type'    => Mvc::class,
-                        'route'   => 'advert-project/page',
+                        'route'   => 'advert-shortholiday/page',
                         'visible' => false,
                     ],
                 ],

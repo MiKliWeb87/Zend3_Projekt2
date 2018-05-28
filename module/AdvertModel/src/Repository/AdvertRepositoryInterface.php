@@ -43,13 +43,13 @@ interface AdvertRepositoryInterface
     public function getSingleAdvertById($id);
 
     /**
-     * Get a random job advert
+     * Get a random holiday advert
      *
      * @param string $type
      *
      * @return AdvertEntity|bool
      */
-    public function getRandomAdvert($type = 'job');
+    public function getRandomAdvert($type = 'holiday');
 
     /**
      * Create a new advert based on array data

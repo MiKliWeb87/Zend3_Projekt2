@@ -23,8 +23,8 @@ return [
     'advert_model_message_location_invalid' => 'Nur %min%-%max% Zeichen erlaubt!',
 
     // option texts
-    'advert_model_option_type_job'          => 'Job',
-    'advert_model_option_type_project'      => 'Projekt',
+    'advert_model_option_type_holiday'          => 'Urlaub',
+    'advert_model_option_type_shortholiday'      => 'Kurzurlaub',
     'advert_model_option_status_new'        => 'neu',
     'advert_model_option_status_approved'   => 'genehmigt',
     'advert_model_option_status_blocked'    => 'blockiert',
