@@ -13,15 +13,15 @@ return [
     'advert_frontend_navigation_shortholidays'    => 'Kurzurlaub',
 
     // title texts
-    'advert_frontend_title_display_holidays'     => 'Aktuelle Zend Framework Urlaub',
-    'advert_frontend_title_display_shortholidays' => 'Aktuelle Zend Framework Kurzurlaub',
+    'advert_frontend_title_display_holidays'     => 'Aktuelle Urlaubsziele',
+    'advert_frontend_title_display_shortholidays' => 'Aktuelle Kurzurlaubsziele',
     'advert_frontend_title_modify_edit'      => 'Annonce bearbeiten',
     'advert_frontend_title_modify_delete'    => 'Annonce löschen',
     'advert_frontend_title_modify_add'       => 'Annonce anlegen',
 
     // heading texts
-    'advert_frontend_h1_display_holidays'        => 'Aktuellen Urlaub',
-    'advert_frontend_h1_display_shortholidays'    => 'Aktuellen Kurzurlaub',
+    'advert_frontend_h1_display_holidays'        => 'Aktuelle Urlaubsziele',
+    'advert_frontend_h1_display_shortholidays'    => 'Aktuelle Kurzurlaubsziele',
     'advert_frontend_h1_modify_edit'         => 'Annonce bearbeiten',
     'advert_frontend_h1_modify_delete'       => 'Annonce löschen',
     'advert_frontend_h1_modify_add'          => 'Annonce anlegen',
