@@ -47,7 +47,7 @@ return [
     'advert_backend_label_updated'           => 'Geändert',
     'advert_backend_label_type'              => 'Typ',
     'advert_backend_label_status'            => 'Status',
-    'advert_backend_label_company'           => 'Unternehmen',
+    'advert_backend_label_holidaycenter'     => 'Reisebüro',
     'advert_backend_label_location'          => 'Ort',
     'advert_backend_label_title'             => 'Titel',
     'advert_backend_label_text'              => 'Text',

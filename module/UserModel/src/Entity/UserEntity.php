@@ -134,8 +134,8 @@ class UserEntity
      */
     public function setRole($role)
     {
-        if (!in_array($role, ['company', 'admin'])) {
-            $role = 'company';
+        if (!in_array($role, ['holidaycenter', 'admin'])) {
+            $role = 'holidaycenter';
         }
 
         $this->role = $role;

@@ -23,7 +23,7 @@ $this->h1('advert_backend_h1_display_index');
     <th><?= $this->translate('advert_backend_label_status') ?></th>
     <th><?= $this->translate('advert_backend_label_title') ?></th>
     <th class="hidden-xs">
-      <?= $this->translate('advert_backend_label_company') ?>
+      <?= $this->translate('advert_backend_label_holidaycenter') ?>
     </th>
     <th class="hidden-xs">
       <?= $this->translate('advert_backend_label_location') ?>
@@ -73,7 +73,7 @@ $this->h1('advert_backend_h1_display_index');
         </a>
       </td>
       <td class="hidden-xs">
-        <?= $advert->getCompany()->getName() ?>
+        <?= $advert->getHolidaycenter()->getName() ?>
       </td>
       <td class="hidden-xs">
         <?= $advert->getLocation() ?>

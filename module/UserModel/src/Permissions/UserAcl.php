@@ -10,7 +10,8 @@
 namespace UserModel\Permissions;
 
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\CompanyRole;
+//use UserModel\Permissions\Role\CompanyRole;
+use UserModel\Permissions\Role\HolidaycenterRole; //neu
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Permissions\Acl\Acl;
 use Zend\Permissions\Acl\Acl as ZendAcl;
@@ -30,7 +31,8 @@ class UserAcl extends ZendAcl
     public function __construct(array $config = [])
     {
         $this->addRole(new GuestRole());
-        $this->addRole(new CompanyRole());
+        //$this->addRole(new CompanyRole());
+		$this->addRole(new HolidaycenterRole()); //neue Nutzerrolle
         $this->addRole(new AdminRole());
 
         $this->addConfig($config);

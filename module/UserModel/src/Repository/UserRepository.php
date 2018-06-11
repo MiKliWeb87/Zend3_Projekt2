@@ -85,7 +85,7 @@ class UserRepository implements UserRepositoryInterface
         $nextId = $this->userStorage->nextId();
 
         $status = isset($data['status']) ? $data['status'] : 'new';
-        $role   = isset($data['role']) ? $data['role'] : 'company';
+        $role   = isset($data['role']) ? $data['role'] : 'holidaycenter';
 
         $user = new UserEntity();
         $user->setId($nextId);

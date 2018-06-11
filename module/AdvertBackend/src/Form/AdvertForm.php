@@ -36,7 +36,7 @@ class AdvertForm extends Form implements AdvertFormInterface
     /**
      * @var array
      */
-    private $companyOptions;
+    private $holidaycenterOptions;
 
     /**
      * @param array $statusOptions
@@ -55,11 +55,11 @@ class AdvertForm extends Form implements AdvertFormInterface
     }
 
     /**
-     * @param array $companyOptions
+     * @param array $holidaycenterOptions
      */
-    public function setCompanyOptions($companyOptions)
+    public function setHolidaycenterOptions($holidaycenterOptions)
     {
-        $this->companyOptions = $companyOptions;
+        $this->holidaycenterOptions = $holidaycenterOptions;
     }
 
     /**
@@ -108,13 +108,13 @@ class AdvertForm extends Form implements AdvertFormInterface
         $this->add(
             [
                 'type'       => Select::class,
-                'name'       => 'company',
+                'name'       => 'holidaycenter',
                 'attributes' => [
                     'class' => 'form-control',
                 ],
                 'options'    => [
-                    'value_options' => $this->companyOptions,
-                    'label'         => 'advert_backend_label_company',
+                    'value_options' => $this->holidaycenterOptions,
+                    'label'         => 'advert_backend_label_holidaycenter',
                 ],
             ]
         );
@@ -186,8 +186,8 @@ class AdvertForm extends Form implements AdvertFormInterface
             $this->remove('type');
         }
 
-        if ($this->has('company')) {
-            $this->remove('company');
+        if ($this->has('holidaycenter')) {
+            $this->remove('holidaycenter');
         }
 
         $this->setValidationGroup(array_keys($this->getElements()));

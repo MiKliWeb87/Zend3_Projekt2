@@ -1,0 +1,120 @@
+<?php
+/**
+ * ZF3 book Zend Framework Center Example Application
+ *
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author 	 	 	   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
+ * @link 			   https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+use HolidaycenterModel\Entity\HolidaycenterEntity;
+
+$addLink = $this->url(
+    'holidaycenter-backend/modify', ['action' => 'add'], true
+);
+
+$this->headTitle('holidaycenter_backend_title_display_index');
+$this->h1('holidaycenter_backend_h1_display_index');
+?>
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+  <tr>
+    <th><?= $this->translate('holidaycenter_backend_label_status') ?></th>
+    <th><?= $this->translate('holidaycenter_backend_label_name') ?></th>
+    <th class="hidden-xs">
+      <?= $this->translate('holidaycenter_backend_label_email') ?>
+    </th>
+    <th class="hidden-xs">
+      <?= $this->translate('holidaycenter_backend_label_contact') ?>
+    </th>
+    <th class="hidden-xs">
+      <?= $this->translate('holidaycenter_backend_label_updated') ?>
+    </th>
+    <th class="text-center">
+      <a href="<?= $addLink ?>">
+        <i class="fa fa-plus-square-o"></i>
+      </a>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <?php /** @var HolidaycenterEntity $holidaycenter */ ?>
+  <?php foreach ($this->holidaycenterList as $holidaycenter) : ?>
+    <?php
+    $showLink    = $this->url(
+        'holidaycenter-backend/show', ['id' => $holidaycenter->getId()], true
+    );
+    $editLink    = $this->url(
+        'holidaycenter-backend/modify',
+        ['action' => 'edit', 'id' => $holidaycenter->getId()], true
+    );
+    $deleteLink  = $this->url(
+        'holidaycenter-backend/modify',
+        ['action' => 'delete', 'id' => $holidaycenter->getId()], true
+    );
+    $approveLink = $this->url(
+        'holidaycenter-backend/modify',
+        ['action' => 'approve', 'id' => $holidaycenter->getId()], true
+    );
+    $blockLink   = $this->url(
+        'holidaycenter-backend/modify',
+        ['action' => 'block', 'id' => $holidaycenter->getId()], true
+    );
+    ?>
+    <tr>
+      <td>
+        <?= $this->translate(
+            'holidaycenter_model_option_status_' . $holidaycenter->getStatus()
+        ) ?>
+      </td>
+      <td>
+        <a href="<?= $showLink ?>">
+          <?= $holidaycenter->getName() ?>
+        </a>
+      </td>
+      <td class="hidden-xs">
+        <?= $holidaycenter->getEmail() ?>
+      </td>
+      <td class="hidden-xs">
+        <?= $holidaycenter->getContact() ?>
+      </td>
+      <td class="hidden-xs">
+        <?= $this->dateFormat(
+            $holidaycenter->getUpdated(),
+            IntlDateFormatter::MEDIUM,
+            IntlDateFormatter::MEDIUM
+        ) ?>
+      </td>
+      <td class="text-center">
+        <a href="<?= $showLink ?>" class="hidden-xs hidden-sm">
+          <i class="fa fa-file-text-o"></i>
+        </a>
+        <a href="<?= $editLink ?>">
+            <i class="fa fa-pencil"></i>
+        </a>
+        <a href="<?= $deleteLink ?>" class="hidden-xs hidden-sm">
+          <i class="fa fa-trash-o"></i>
+        </a>
+        <a href="<?= $approveLink ?>" class="visible-lg-inline">
+          <i class="fa fa-thumbs-o-up"></i>
+        </a>
+        <a href="<?= $blockLink ?>" class="visible-lg-inline">
+         <i class="fa fa-thumbs-o-down"></i>
+        </a>
+      </td>
+    </tr>
+  <?php endforeach; ?>
+  </tbody>
+</table>
+<nav class="text-center">
+  <?php
+  echo $this->paginationControl(
+      $this->holidaycenterList,
+      'Sliding',
+      'pagination/page-navigation',
+      [
+        'route' => 'holidaycenter-backend/page'
+      ]
+  );
+  ?>
+</nav>

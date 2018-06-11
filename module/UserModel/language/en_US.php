@@ -22,6 +22,7 @@ return [
     'user_model_option_status_new'        => 'new',
     'user_model_option_status_approved'   => 'approved',
     'user_model_option_status_blocked'    => 'blocked',
-    'user_model_option_role_company'      => 'Company',
+    //'user_model_option_role_company'      => 'Company',
+	'user_model_option_role_holidaycenter'      => 'Holidaycenter',
     'user_model_option_role_admin'        => 'Administrator',
 ];

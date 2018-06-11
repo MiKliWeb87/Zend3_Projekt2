@@ -77,7 +77,7 @@ class AdvertDbStorage implements AdvertStorageInterface
             $select->where->equalTo('advert.type', $type);
         }
 
-        $select = $this->addCompanyJoinToSelect($select);
+        $select = $this->addHolidaycenterJoinToSelect($select);
 
         $dbSelectAdapter = new DbSelect(
             $select,
@@ -104,7 +104,7 @@ class AdvertDbStorage implements AdvertStorageInterface
         $select = $this->tableGateway->getSql()->select();
         $select->where->equalTo('advert.id', $id);
 
-        $select = $this->addCompanyJoinToSelect($select);
+        $select = $this->addHolidaycenterJoinToSelect($select);
 
         /** @var ResultSet $resultSet */
         $resultSet = $this->tableGateway->selectWith($select);
@@ -127,7 +127,7 @@ class AdvertDbStorage implements AdvertStorageInterface
         $select->order(new Expression('RAND()'));
         $select->limit(1);
 
-        $select = $this->addCompanyJoinToSelect($select);
+        $select = $this->addHolidaycenterJoinToSelect($select);
 
         /** @var ResultSet $resultSet */
         $resultSet = $this->tableGateway->selectWith($select);
@@ -201,26 +201,26 @@ class AdvertDbStorage implements AdvertStorageInterface
     }
 
     /**
-     * Add company join to select
+     * Add holidaycenter join to select
      *
      * @param Select $select
      *
      * @return Select
      */
-    private function addCompanyJoinToSelect(Select $select)
+    private function addHolidaycenterJoinToSelect(Select $select)
     {
         $select->join(
-            'company',
-            'advert.company = company.id',
+            'holidaycenter',
+            'advert.holidaycenter = holidaycenter.id',
             [
-                'company_id'         => 'id',
-                'company_registered' => 'registered',
-                'company_updated'    => 'updated',
-                'company_status'     => 'status',
-                'company_name'       => 'name',
-                'company_email'      => 'email',
-                'company_contact'    => 'contact',
-                'company_logo'       => 'logo',
+                'holidaycenter_id'         => 'id',
+                'holidaycenter_registered' => 'registered',
+                'holidaycenter_updated'    => 'updated',
+                'holidaycenter_status'     => 'status',
+                'holidaycenter_name'       => 'name',
+                'holidaycenter_email'      => 'email',
+                'holidaycenter_contact'    => 'contact',
+                'holidaycenter_logo'       => 'logo',
             ]
         );
 

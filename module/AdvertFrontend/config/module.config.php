@@ -14,7 +14,8 @@ use AdvertFrontend\Controller\ModifyControllerFactory;
 use AdvertFrontend\Permissions\Resource\DisplayResource;
 use AdvertFrontend\Permissions\Resource\ModifyResource;
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\CompanyRole;
+//use UserModel\Permissions\Role\CompanyRole;
+use UserModel\Permissions\Role\HolidaycenterRole;
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Navigation\Page\Mvc;
 use Zend\Permissions\Acl\Acl;
@@ -215,14 +216,22 @@ return [
             ],
         ],
     ],
-
+//Zugriffsrechte
     'acl' => [
         GuestRole::NAME   => [
             DisplayResource::NAME => [
                 Acl::TYPE_ALLOW => null,
             ],
         ],
-        CompanyRole::NAME => [
+    /*    CompanyRole::NAME => [
+            DisplayResource::NAME => [
+                Acl::TYPE_ALLOW => null,
+            ],
+            ModifyResource::NAME => [
+                Acl::TYPE_ALLOW => null,
+            ],
+        ],*/
+		HolidaycenterRole::NAME => [
             DisplayResource::NAME => [
                 Acl::TYPE_ALLOW => null,
             ],

@@ -38,7 +38,8 @@ use UserFrontend\View\Helper\ShowRegisterForm;
 use UserFrontend\View\Helper\ShowUserWidget;
 use UserFrontend\View\Helper\ShowUserWidgetFactory;
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\CompanyRole;
+//use UserModel\Permissions\Role\CompanyRole;
+use UserModel\Permissions\Role\HolidaycenterRole; //neu
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Authentication\Adapter\AdapterInterface;
 use Zend\Authentication\AuthenticationService;
@@ -217,7 +218,18 @@ return [
                 Acl::TYPE_ALLOW => null,
             ],
         ],
-        CompanyRole::NAME => [
+    /*    CompanyRole::NAME => [
+            IndexResource::NAME     => [
+                Acl::TYPE_ALLOW => null,
+            ],
+            EditResource::NAME      => [
+                Acl::TYPE_ALLOW => null,
+            ],
+            ForbiddenResource::NAME => [
+                Acl::TYPE_ALLOW => null,
+            ],
+        ],*/
+		HolidaycenterRole::NAME => [
             IndexResource::NAME     => [
                 Acl::TYPE_ALLOW => null,
             ],

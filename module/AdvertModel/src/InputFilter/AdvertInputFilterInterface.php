@@ -27,9 +27,9 @@ interface AdvertInputFilterInterface
     public function setTypeOptions($typeOptions);
 
     /**
-     * @param array $companyOptions
+     * @param array $holidaycenterOptions
      */
-    public function setCompanyOptions($companyOptions);
+    public function setHolidaycenterOptions($holidaycenterOptions);
 
     /**
      * Init input filter

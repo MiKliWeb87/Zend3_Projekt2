@@ -15,7 +15,8 @@ use Application\I18n\I18nListener;
 use Application\I18n\I18nListenerFactory;
 use Application\Permissions\Resource\IndexResource;
 use UserModel\Permissions\Role\AdminRole;
-use UserModel\Permissions\Role\CompanyRole;
+//use UserModel\Permissions\Role\CompanyRole;
+use UserModel\Permissions\Role\HolidaycenterRole; //neu
 use UserModel\Permissions\Role\GuestRole;
 use Zend\Navigation\Page\Mvc;
 use Zend\Permissions\Acl\Acl;
@@ -110,7 +111,14 @@ return [
                 ],
             ],
         ],
-        CompanyRole::NAME => [
+       /* CompanyRole::NAME => [
+            IndexResource::NAME => [
+                Acl::TYPE_ALLOW => [
+                    IndexResource::PRIVILEGE_INDEX,
+                ],
+            ],
+        ],*/
+		HolidaycenterRole::NAME => [
             IndexResource::NAME => [
                 Acl::TYPE_ALLOW => [
                     IndexResource::PRIVILEGE_INDEX,

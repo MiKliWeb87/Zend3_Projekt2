@@ -9,7 +9,7 @@
 
 namespace AdvertModel\Entity;
 
-use CompanyModel\Entity\CompanyEntity;
+use HolidaycenterModel\Entity\HolidaycenterEntity;
 use DateTime;
 
 /**
@@ -45,9 +45,9 @@ class AdvertEntity
     private $type;
 
     /**
-     * @var CompanyEntity
+     * @var HolidaycenterEntity
      */
-    private $company;
+    private $holidaycenter;
 
     /**
      * @var string
@@ -153,19 +153,19 @@ class AdvertEntity
     }
 
     /**
-     * @return CompanyEntity
+     * @return HolidaycenterEntity
      */
-    public function getCompany()
+    public function getHolidaycenter()
     {
-        return $this->company;
+        return $this->holidaycenter;
     }
 
     /**
-     * @param CompanyEntity $company
+     * @param HolidaycenterEntity $holidaycenter
      */
-    public function setCompany(CompanyEntity $company)
+    public function setHolidaycenter(HolidaycenterEntity $holidaycenter)
     {
-        $this->company = $company;
+        $this->holidaycenter = $holidaycenter;
     }
 
     /**

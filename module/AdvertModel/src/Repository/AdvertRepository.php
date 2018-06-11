@@ -11,7 +11,7 @@ namespace AdvertModel\Repository;
 
 use AdvertModel\Entity\AdvertEntity;
 use AdvertModel\Storage\AdvertStorageInterface;
-use CompanyModel\Entity\CompanyEntity;
+use HolidaycenterModel\Entity\HolidaycenterEntity;
 use DateTime;
 use Zend\Paginator\Paginator;
 
@@ -88,8 +88,8 @@ class AdvertRepository implements AdvertRepositoryInterface
      */
     public function createAdvertFromData(array $data = [])
     {
-        $company = new CompanyEntity();
-        $company->setId($data['company']);
+        $holidaycenter = new HolidaycenterEntity();
+        $holidaycenter->setId($data['holidaycenter']);
 
         $nextId = $this->advertStorage->nextId();
 
@@ -99,7 +99,7 @@ class AdvertRepository implements AdvertRepositoryInterface
         $advert->setUpdated(new DateTime());
         $advert->setStatus($data['status']);
         $advert->setType($data['type']);
-        $advert->setCompany($company);
+        $advert->setHolidaycenter($holidaycenter);
         $advert->setTitle($data['title']);
         $advert->setText($data['text']);
         $advert->setLocation($data['location']);

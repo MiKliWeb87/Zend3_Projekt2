@@ -10,7 +10,7 @@
 namespace AdvertModel\InputFilter;
 
 use AdvertModel\Config\AdvertConfigInterface;
-use CompanyModel\Repository\CompanyRepositoryInterface;
+use HolidaycenterModel\Repository\HolidaycenterRepositoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
@@ -35,9 +35,9 @@ class AdvertInputFilterFactory implements FactoryInterface
         /** @var AdvertConfigInterface $advertConfig */
         $advertConfig = $container->get(AdvertConfigInterface::class);
 
-        /** @var CompanyRepositoryInterface $companyRepository */
-        $companyRepository = $container->get(
-            CompanyRepositoryInterface::class
+        /** @var HolidaycenterRepositoryInterface $holidaycenterRepository */
+        $holidaycenterRepository = $container->get(
+            HolidaycenterRepositoryInterface::class
         );
 
         $inputFilter = new AdvertInputFilter();
@@ -47,8 +47,8 @@ class AdvertInputFilterFactory implements FactoryInterface
         $inputFilter->setTypeOptions(
             array_keys($advertConfig->getTypeOptions())
         );
-        $inputFilter->setCompanyOptions(
-            array_keys($companyRepository->getCompanyOptions())
+        $inputFilter->setHolidaycenterOptions(
+            array_keys($holidaycenterRepository->getHolidaycenterOptions())
         );
 
         return $inputFilter;

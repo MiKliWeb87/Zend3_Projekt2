@@ -55,7 +55,7 @@ $this->h1($h1Text);
         </strong>
       </div>
       <div class="right-text">
-        <?= $advert->getCompany()->getName() ?>
+        <?= $advert->getHolidaycenter()->getName() ?>
       </div>
     </div>
     <div class="panel-body">
@@ -67,9 +67,9 @@ $this->h1($h1Text);
           </a>
         </p>
       </div>
-      <div class="col-sm-3 company">
+      <div class="col-sm-3 holidaycenter">
         <img class="img-responsive"
-             src="<?= $advert->getCompany()->getLogo() ?>">
+             src="<?= $advert->getHolidaycenter()->getLogo() ?>">
       </div>
     </div>
     <div class="panel-footer clearfix">

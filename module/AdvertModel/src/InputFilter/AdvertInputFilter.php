@@ -38,7 +38,7 @@ class AdvertInputFilter extends InputFilter
     /**
      * @var array
      */
-    private $companyOptions;
+    private $holidaycenterOptions;
 
     /**
      * @param array $statusOptions
@@ -57,11 +57,11 @@ class AdvertInputFilter extends InputFilter
     }
 
     /**
-     * @param array $companyOptions
+     * @param array $holidaycenterOptions
      */
-    public function setCompanyOptions($companyOptions)
+    public function setHolidaycenterOptions($holidaycenterOptions)
     {
-        $this->companyOptions = $companyOptions;
+        $this->holidaycenterOptions = $holidaycenterOptions;
     }
 
     /**
@@ -119,7 +119,7 @@ class AdvertInputFilter extends InputFilter
 
         $this->add(
             [
-                'name'       => 'company',
+                'name'       => 'holidaycenter',
                 'required'   => true,
                 'filters'    => [],
                 'validators' => [
@@ -127,14 +127,14 @@ class AdvertInputFilter extends InputFilter
                         'name'                   => NotEmpty::class,
                         'break_chain_on_failure' => true,
                         'options'                => [
-                            'message' => 'advert_model_message_company_missing',
+                            'message' => 'advert_model_message_holidaycenter_missing',
                         ],
                     ],
                     [
                         'name'    => InArray::class,
                         'options' => [
-                            'haystack' => $this->companyOptions,
-                            'message'  => 'advert_model_message_company_invalid',
+                            'haystack' => $this->holidaycenterOptions,
+                            'message'  => 'advert_model_message_holidaycenter_invalid',
                         ],
                     ],
                 ],

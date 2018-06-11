@@ -141,7 +141,7 @@ return [
             ],
         ],
     ],
-
+// Zugriffsrecht nur für Admin
     'acl' => [
         AdminRole::NAME   => [
             DisplayResource::NAME => [

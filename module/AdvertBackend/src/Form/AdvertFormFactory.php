@@ -12,7 +12,7 @@ namespace AdvertBackend\Form;
 use AdvertModel\Config\AdvertConfigInterface;
 use AdvertModel\Hydrator\AdvertHydrator;
 use AdvertModel\InputFilter\AdvertInputFilter;
-use CompanyModel\Repository\CompanyRepositoryInterface;
+use HolidaycenterModel\Repository\HolidaycenterRepositoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\Hydrator\HydratorPluginManager;
 use Zend\InputFilter\InputFilterInterface;
@@ -54,9 +54,9 @@ class AdvertFormFactory implements FactoryInterface
         /** @var AdvertConfigInterface $advertConfig */
         $advertConfig = $container->get(AdvertConfigInterface::class);
 
-        /** @var CompanyRepositoryInterface $companyRepository */
-        $companyRepository = $container->get(
-            CompanyRepositoryInterface::class
+        /** @var HolidaycenterRepositoryInterface $holidaycenterRepository */
+        $holidaycenterRepository = $container->get(
+            HolidaycenterRepositoryInterface::class
         );
 
         $form = new AdvertForm();
@@ -64,7 +64,7 @@ class AdvertFormFactory implements FactoryInterface
         $form->setInputFilter($advertInputFilter);
         $form->setStatusOptions($advertConfig->getStatusOptions());
         $form->setTypeOptions($advertConfig->getTypeOptions());
-        $form->setCompanyOptions($companyRepository->getCompanyOptions());
+        $form->setHolidaycenterOptions($holidaycenterRepository->getHolidaycenterOptions());
 
         return $form;
     }

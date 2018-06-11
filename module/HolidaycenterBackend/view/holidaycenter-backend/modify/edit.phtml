@@ -1,0 +1,108 @@
+<?php
+/**
+ * ZF3 book Zend Framework Center Example Application
+ *
+ * @authorSkeleton     Ralf Eggert <ralf@travello.de>  * @author 	 	 	   Mirco Klink
+ * @linkSkeleton       https://github.com/zf3buch/zendframework-center
+ * @link 			   https://github.com/MiKliWeb87/Zend3_Projekt2  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
+ */
+
+use HolidaycenterBackend\Form\HolidaycenterFormInterface;
+use HolidaycenterModel\Entity\HolidaycenterEntity;
+
+/** @var HolidaycenterFormInterface $form */
+$form = $this->holidaycenterForm;
+
+/** @var HolidaycenterEntity $holidaycenter */
+$holidaycenter = $this->holidaycenter;
+
+$listLink    = $this->url('holidaycenter-backend', [], true);
+$showLink    = $this->url(
+    'holidaycenter-backend/show', ['id' => $holidaycenter->getId()], true
+);
+$editLink    = $this->url(
+    'holidaycenter-backend/modify', ['action' => 'edit', 'id' => $holidaycenter->getId()], true
+);
+$deleteLink  = $this->url(
+    'holidaycenter-backend/modify', ['action' => 'delete', 'id' => $holidaycenter->getId()], true
+);
+$approveLink = $this->url(
+    'holidaycenter-backend/modify', ['action' => 'approve', 'id' => $holidaycenter->getId()], true
+);
+$blockLink   = $this->url(
+    'holidaycenter-backend/modify', ['action' => 'block', 'id' => $holidaycenter->getId()], true
+);
+
+$this->headTitle('holidaycenter_backend_title_display_edit');
+$this->h1('holidaycenter_backend_h1_display_edit');
+?>
+<p>
+  <a href="<?= $showLink ?>" class="btn btn-default">
+    <i class="fa fa-file-text-o"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('holidaycenter_backend_action_show_short') ?>
+    </span>
+  </a>
+  <a href="<?= $editLink ?>" class="btn btn-primary">
+    <i class="fa fa-pencil"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('holidaycenter_backend_action_edit_short') ?>
+    </span>
+  </a>
+  <a href="<?= $deleteLink ?>" class="btn btn-default">
+    <i class="fa fa-trash-o"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('holidaycenter_backend_action_delete_short') ?>
+    </span>
+  </a>
+  <a href="<?= $approveLink ?>" class="btn btn-default">
+    <i class="fa fa-thumbs-o-up"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('holidaycenter_backend_action_approve_short') ?>
+    </span>
+  </a>
+  <a href="<?= $blockLink ?>" class="btn btn-default">
+    <i class="fa fa-thumbs-o-down"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('holidaycenter_backend_action_block_short') ?>
+    </span>
+  </a>
+  <a href="<?= $listLink ?>" class="btn btn-default">
+    <i class="fa fa-list"></i>
+    <span class="hidden-xs hidden-sm">
+      <?= $this->translate('holidaycenter_backend_action_overview') ?>
+    </span>
+  </a>
+</p>
+<?php
+$staticElements = [
+    [
+        'label' => $this->translate('holidaycenter_backend_label_created'),
+        'value' => $this->dateFormat(
+            $holidaycenter->getRegistered(),
+            IntlDateFormatter::MEDIUM,
+            IntlDateFormatter::MEDIUM
+        ),
+    ],
+    [
+        'label' => $this->translate('holidaycenter_backend_label_updated'),
+        'value' => $this->dateFormat(
+            $holidaycenter->getUpdated(),
+            IntlDateFormatter::MEDIUM,
+            IntlDateFormatter::MEDIUM
+        ),
+    ],
+    [
+        'label' => $this->translate('holidaycenter_backend_label_status'),
+        'value' => $this->translate(
+            'holidaycenter_model_option_status_' . $holidaycenter->getStatus()
+        ),
+    ],
+];
+?>
+<div class="well" style="position: relative">
+  <div style="position: absolute; right: 20px;">
+    <img src="<?= $holidaycenter->getLogo() ?>">
+  </div>
+  <?= $this->bootstrapForm($form, $staticElements); ?>
+</div>

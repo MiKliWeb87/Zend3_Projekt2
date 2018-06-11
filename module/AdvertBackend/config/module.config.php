@@ -141,7 +141,7 @@ return [
             ],
         ],
     ],
-
+// Zugriffsrecht auf Annoncenbackend(bearbeiten) nur für Admin
     'acl' => [
         AdminRole::NAME   => [
             DisplayResource::NAME => [

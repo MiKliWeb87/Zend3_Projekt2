@@ -29,9 +29,9 @@ interface AdvertFormInterface extends FormInterface
     public function setTypeOptions($typeOptions);
 
     /**
-     * @param array $companyOptions
+     * @param array $holidaycenterOptions
      */
-    public function setCompanyOptions($companyOptions);
+    public function setHolidaycenterOptions($holidaycenterOptions);
 
     /**
      * Switch to edit mode

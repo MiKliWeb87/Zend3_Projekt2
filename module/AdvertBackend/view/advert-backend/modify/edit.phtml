@@ -108,12 +108,12 @@ $staticElements = [
             . $advert->getStatus()),
     ],
     [
-        'label' => $this->translate('advert_backend_label_company'),
-        'value' => $advert->getCompany()->getName() . ' <i>('
+        'label' => $this->translate('advert_backend_label_holidaycenter'),
+        'value' => $advert->getHolidaycenter()->getName() . ' <i>('
             . $this->translate('advert_frontend_label_type_contact') . ': '
-            . $advert->getCompany()->getContact() . ', '
-            . $this->translate('company_backend_label_email') . ': '
-            . $advert->getCompany()->getEmail() . ')</i>',
+            . $advert->getHolidaycenter()->getContact() . ', '
+            . $this->translate('holidaycenter_backend_label_email') . ': '
+            . $advert->getHolidaycenter()->getEmail() . ')</i>',
     ],
 ];
 ?>
