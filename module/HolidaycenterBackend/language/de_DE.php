@@ -9,37 +9,37 @@
 
 return [
     // navigation texts
-    'holidaycenter_backend_navigation_admin'         => 'Unternehmen administrieren',
+    'holidaycenter_backend_navigation_admin'         => 'Reisebüro administrieren',
 
     // title texts
-    'holidaycenter_backend_title_display_index'      => 'Unternehmen administrieren',
-    'holidaycenter_backend_title_display_show'       => 'Unternehmen anzeigen',
-    'holidaycenter_backend_title_display_edit'       => 'Unternehmen bearbeiten',
-    'holidaycenter_backend_title_display_delete'     => 'Unternehmen löschen',
-    'holidaycenter_backend_title_display_block'      => 'Unternehmen blockieren',
-    'holidaycenter_backend_title_display_approve'    => 'Unternehmen genehmigen',
-    'holidaycenter_backend_title_display_add'        => 'Unternehmen anlegen',
+    'holidaycenter_backend_title_display_index'      => 'Reisebüro administrieren',
+    'holidaycenter_backend_title_display_show'       => 'Reisebüro anzeigen',
+    'holidaycenter_backend_title_display_edit'       => 'Reisebüro bearbeiten',
+    'holidaycenter_backend_title_display_delete'     => 'Reisebüro löschen',
+    'holidaycenter_backend_title_display_block'      => 'Reisebüro blockieren',
+    'holidaycenter_backend_title_display_approve'    => 'Reisebüro genehmigen',
+    'holidaycenter_backend_title_display_add'        => 'Reisebüro anlegen',
 
     // heading texts
-    'holidaycenter_backend_h1_display_index'         => 'Unternehmen administrieren',
-    'holidaycenter_backend_h1_display_show'          => 'Unternehmen anzeigen',
-    'holidaycenter_backend_h1_display_edit'          => 'Unternehmen bearbeiten',
-    'holidaycenter_backend_h1_display_delete'        => 'Unternehmen löschen',
-    'holidaycenter_backend_h1_display_block'         => 'Unternehmen blockieren',
-    'holidaycenter_backend_h1_display_approve'       => 'Unternehmen genehmigen',
-    'holidaycenter_backend_h1_display_add'           => 'Unternehmen anlegen',
+    'holidaycenter_backend_h1_display_index'         => 'Reisebüro administrieren',
+    'holidaycenter_backend_h1_display_show'          => 'Reisebüro anzeigen',
+    'holidaycenter_backend_h1_display_edit'          => 'Reisebüro bearbeiten',
+    'holidaycenter_backend_h1_display_delete'        => 'Reisebüro löschen',
+    'holidaycenter_backend_h1_display_block'         => 'Reisebüro blockieren',
+    'holidaycenter_backend_h1_display_approve'       => 'Reisebüro genehmigen',
+    'holidaycenter_backend_h1_display_add'           => 'Reisebüro anlegen',
 
     // message texts
-    'holidaycenter_backend_message_create_holidaycenter'   => 'Sie können das neue Unternehmen nun anlegen!',
-    'holidaycenter_backend_message_update_holidaycenter'   => 'Sie können das Unternehmen nun bearbeiten!',
-    'holidaycenter_backend_message_delete_holidaycenter'   => 'Möchten Sie dieses Unternehmen löschen?',
-    'holidaycenter_backend_message_approve_holidaycenter'  => 'Möchten Sie dieses Unternehmen genehmigen?',
-    'holidaycenter_backend_message_block_holidaycenter'    => 'Möchten Sie dieses Unternehmen sperren?',
-    'holidaycenter_backend_message_saved_holidaycenter'    => 'Das Unternehmen wurde gespeichert!',
-    'holidaycenter_backend_message_deleted_holidaycenter'  => 'Das Unternehmen wurde gelöscht!',
-    'holidaycenter_backend_message_approved_holidaycenter' => 'Das Unternehmen wurde genehmigt!',
-    'holidaycenter_backend_message_blocked_holidaycenter'  => 'Das Unternehmen wurde gesperrt!',
-    'holidaycenter_backend_message_check_data'       => 'Bitte überprüfen Sie die Daten des Unternehmens!',
+    'holidaycenter_backend_message_create_holidaycenter'   => 'Sie können das neue Reisebüro nun anlegen!',
+    'holidaycenter_backend_message_update_holidaycenter'   => 'Sie können das Reisebüro nun bearbeiten!',
+    'holidaycenter_backend_message_delete_holidaycenter'   => 'Möchten Sie dieses Reisebüro löschen?',
+    'holidaycenter_backend_message_approve_holidaycenter'  => 'Möchten Sie dieses Reisebüro genehmigen?',
+    'holidaycenter_backend_message_block_holidaycenter'    => 'Möchten Sie dieses Reisebüro sperren?',
+    'holidaycenter_backend_message_saved_holidaycenter'    => 'Das Reisebüro wurde gespeichert!',
+    'holidaycenter_backend_message_deleted_holidaycenter'  => 'Das Reisebüro wurde gelöscht!',
+    'holidaycenter_backend_message_approved_holidaycenter' => 'Das Reisebüro wurde genehmigt!',
+    'holidaycenter_backend_message_blocked_holidaycenter'  => 'Das Reisebüro wurde gesperrt!',
+    'holidaycenter_backend_message_check_data'       => 'Bitte überprüfen Sie die Daten des Reisebüros!',
     'holidaycenter_backend_message_form_timeout'     => 'Zeitüberschreitung! Bitte Formular erneut absenden!',
 
     // label texts
@@ -52,10 +52,10 @@ return [
     'holidaycenter_backend_label_logo'               => 'Logo',
 
     // action texts
-    'holidaycenter_backend_action_save'              => 'Unternehmen speichern',
-    'holidaycenter_backend_action_delete'            => 'Unternehmen löschen',
-    'holidaycenter_backend_action_approve'           => 'Unternehmen genehmigen',
-    'holidaycenter_backend_action_block'             => 'Unternehmen sperren',
+    'holidaycenter_backend_action_save'              => 'Reisebüro speichern',
+    'holidaycenter_backend_action_delete'            => 'Reisebüro löschen',
+    'holidaycenter_backend_action_approve'           => 'Reisebüro genehmigen',
+    'holidaycenter_backend_action_block'             => 'Reisebüro sperren',
     'holidaycenter_backend_action_cancel'            => 'Abbrechen',
     'holidaycenter_backend_action_show_short'        => 'Anzeigen',
     'holidaycenter_backend_action_edit_short'        => 'Bearbeiten',
