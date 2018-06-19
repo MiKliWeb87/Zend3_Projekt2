@@ -59,12 +59,18 @@ class HolidaycenterEntityStrategy implements StrategyInterface
     {
         $holidaycenterData = [];
 
-        foreach ($data as $key => $value) {
-            if (substr($key, 0, 14) != 'holidaycenter_') {
+        foreach ($data as $key => $value) 
+		{
+			/** 
+			*  Hier Änderung der Anzahl der Buchstaben
+			* auf die Länge des Schlüsselwortes plus Unterstrich(1 Zeichen)
+			*/
+            if (substr($key, 0, 14) != 'holidaycenter_') 
+			{
                 continue;
             }
-
-            $holidaycenterData[substr($key, 14)] = $value;
+		
+            $holidaycenterData[substr($key, 14)] = $value; //Hier Änderung der Anzahl der Buchstaben
         }
 
         $holidaycenterEntity = new HolidaycenterEntity();
