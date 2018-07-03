@@ -165,7 +165,8 @@ class HolidaycenterForm extends Form implements HolidaycenterFormInterface
      */
     public function addMode()
     {
-        if ($this->has('logo')) {
+        if ($this->has('logo')) 
+		{
             $this->remove('logo');
         }
 
@@ -177,7 +178,8 @@ class HolidaycenterForm extends Form implements HolidaycenterFormInterface
      */
     public function editMode()
     {
-        if ($this->has('status')) {
+        if ($this->has('status')) 
+		{
             $this->remove('status');
         }
 
