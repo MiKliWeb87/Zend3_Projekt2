@@ -1,24 +1,38 @@
-SET FOREIGN_KEY_CHECKS=0;
+--
+-- Datenbank: `zf3_p2_holiday`
+--
+CREATE DATABASE IF NOT EXISTS `zf3_p2_holiday` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `zf3_p2_holiday`;
 
-START TRANSACTION;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `advert`;
+--
+-- Tabellenstruktur für Tabelle `advert`
+--
 
-CREATE TABLE IF NOT EXISTS `advert` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `advert` (
+  `id` smallint(5) UNSIGNED NOT NULL,
   `created` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   `status` enum('new','approved','blocked') COLLATE utf8mb4_unicode_ci DEFAULT 'new',
   `type` enum('holiday','shortholiday') COLLATE utf8mb4_unicode_ci DEFAULT 'holiday',
-  `holidaycenter` smallint(5) unsigned DEFAULT NULL,
+  `company` smallint(5) UNSIGNED DEFAULT NULL,
   `title` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `text` text COLLATE utf8mb4_unicode_ci,
-  `location` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `holidaycenter` (`holidaycenter`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=20 ;
+  `location` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `advert` (`id`, `created`, `updated`, `status`, `type`, `holidaycenter`, `title`, `text`, `location`) VALUES
+--
+-- RELATIONEN DER TABELLE `advert`:
+--   `company`
+--       `company` -> `id`
+--
+
+--
+-- Daten für Tabelle `advert`
+--
+
+INSERT INTO `advert` (`id`, `created`, `updated`, `status`, `type`, `company`, `title`, `text`, `location`) VALUES
 (1, '2016-01-02 10:59:38', '2016-01-02 10:59:38', 'approved', 'holiday', 1, 'PHP-Entwickler (m/w)', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'Berlin'),
 (2, '2016-01-02 11:05:41', '2016-01-02 11:05:41', 'approved', 'holiday', 2, 'Senior PHP Entwickler (m/w) mit Erfahrung', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'Hamburg'),
 (3, '2016-01-02 11:06:52', '2016-01-02 11:06:52', 'approved', 'shortholiday', 3, 'Implementationspartner mit E-Commerce Know-How gesucht', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'München'),
@@ -37,36 +51,123 @@ INSERT INTO `advert` (`id`, `created`, `updated`, `status`, `type`, `holidaycent
 (16, '2016-01-02 11:28:22', '2016-01-02 11:28:22', 'approved', 'holiday', 8, 'Senior-Entwickler (m/w) Bereich PHP / Zend Framework ab sofort', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'Hannover'),
 (17, '2016-01-02 11:29:45', '2016-01-02 11:29:45', 'blocked', 'holiday', 9, 'API-Entwickler (m/w) auf PHP Basis gesucht', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'Stuttgart'),
 (18, '2016-01-02 11:31:37', '2016-01-02 11:31:37', 'approved', 'shortholiday', 3, 'Aufbau neues E-Commerce-Portal mit langfristigem Ziel', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'München'),
-(19, '2016-01-02 11:32:35', '2016-01-02 11:32:35', 'new', 'shortholiday', 4, 'Partner für Relaunch Anwaltskanzlei', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'Dortmund');
+(19, '2016-01-02 11:32:35', '2016-01-02 11:32:35', 'new', 'shortholiday', 4, 'Partner für Relaunch Anwaltskanzlei', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>\r\n\r\n<p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>\r\n\r\n<p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.</p>\r\n\r\n<p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien.</p>\r\n\r\n<p>Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui.</p>', 'Dortmund'),
+(20, '2018-05-28 14:26:33', '2018-05-28 14:27:18', 'approved', 'shortholiday', 10, 'Kurzurlaub in Prag', '<p>Kurzurlaub in Prag verfügbar. Tolles Hotel inkl. Vollpension und Poolnutzung.</p>\r\n\r\n<p>Wir freuen uns auf Ihren Besuch.</p>\r\n\r\n<p>Kurzurlaub in Prag verfügbar. Tolles Hotel inkl. Vollpension und Poolnutzung.</p>\r\n\r\n<p>Wir freuen uns auf Ihren Besuch.</p>', 'Prag');
 
-DROP TABLE IF EXISTS `holidaycenter`;
+-- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `holidaycenter` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+--
+-- Tabellenstruktur für Tabelle `company`
+--
+
+CREATE TABLE `company` (
+  `id` smallint(5) UNSIGNED NOT NULL,
   `registered` datetime DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   `status` enum('new','approved','blocked') COLLATE utf8mb4_unicode_ci DEFAULT 'new',
   `name` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=10 ;
+  `logo` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `holidaycenter` (`id`, `registered`, `updated`, `status`, `name`, `email`, `contact`, `logo`) VALUES
-(1, '2016-01-02 10:40:25', '2016-01-02 10:40:25', 'approved', 'Drescher Webagentur GmbH', 'niklas@drescher.holidaycenter', 'Herr Niklas Drescher', '/logos/drescher-webagentur-gmbh.png'),
+--
+-- RELATIONEN DER TABELLE `company`:
+--
+
+--
+-- Daten für Tabelle `company`
+--
+
+INSERT INTO `company` (`id`, `registered`, `updated`, `status`, `name`, `email`, `contact`, `logo`) VALUES
+(1, '2016-01-02 10:40:25', '2016-01-02 10:40:25', 'approved', 'Drescher Webagentur GmbH', 'niklas@drescher.company', 'Herr Niklas Drescher', '/logos/drescher-webagentur-gmbh.png'),
 (2, '2016-01-02 10:43:12', '2016-01-02 10:43:12', 'approved', 'Böhm Lanz AG', 'bohm@boehm-lanz.ag', 'Herr Klaus Böhm', '/logos/boehm-lanz-ag.png'),
 (3, '2016-01-02 10:43:31', '2016-01-02 10:43:31', 'approved', 'Propst und Partner Limited', 'anja.probst@probst.limited', 'Frau Anja Propst', '/logos/propst-und-partner-limited.png'),
-(4, '2016-01-02 10:44:59', '2016-01-02 10:44:59', 'approved', 'Bader Team GmbH', 'ulrich@bader.holidaycenter', 'Herr Ulrich Bader', '/logos/bader-team-gmbh.png'),
+(4, '2016-01-02 10:44:59', '2016-01-02 10:44:59', 'approved', 'Bader Team GmbH', 'ulrich@bader.company', 'Herr Ulrich Bader', '/logos/bader-team-gmbh.png'),
 (5, '2016-01-02 10:46:41', '2016-01-02 10:46:41', 'approved', 'Hirschau AG', 'lena.werfl@hirschau.ag', 'Frau Lena Werfl', '/logos/hirschau-ag.png'),
-(6, '2016-01-02 10:48:55', '2016-01-02 10:48:55', 'approved', 'Sven Schweizer GmbH', 'theresa@schweizer.holidaycenter', 'Frau Theresa Schweizer', '/logos/sven-schweizer-gmbh.png'),
+(6, '2016-01-02 10:48:55', '2016-01-02 10:48:55', 'approved', 'Sven Schweizer GmbH', 'theresa@schweizer.company', 'Frau Theresa Schweizer', '/logos/sven-schweizer-gmbh.png'),
 (7, '2016-01-02 10:50:37', '2016-01-02 10:50:37', 'approved', 'Wirtz AG', 'lea@wirtz.ag', 'Frau Lea Wirtz', '/logos/wirtz-ag.png'),
-(8, '2016-01-02 10:53:18', '2016-01-02 10:53:18', 'approved', 'Eichel Werbung und Mehr GmbH', 'chris@eichel-werbung.holidaycenter', 'Herr Christian Eichel', '/logos/eichel-werbung-und-mehr-gmbh.png'),
-(9, '2016-01-02 10:56:43', '2016-01-02 10:56:43', 'approved', 'Brandtlöscher AG', 'jan@brandtloescher.ag', 'Herr Jan Brandt', '/logos/brandtloescher-ag.png');
+(8, '2016-01-02 10:53:18', '2016-01-02 10:53:18', 'approved', 'Eichel Werbung und Mehr GmbH', 'chris@eichel-werbung.company', 'Herr Christian Eichel', '/logos/eichel-werbung-und-mehr-gmbh.png'),
+(9, '2016-01-02 10:56:43', '2016-01-02 10:56:43', 'approved', 'Brandtlöscher AG', 'jan@brandtloescher.ag', 'Herr Jan Brandt', '/logos/brandtloescher-ag.png'),
+(10, '2018-05-28 14:24:34', '2018-05-28 14:28:01', 'new', 'Reisebüro Klink', 'klink@buero.de', 'Horst Klink', '/logos/reisebuero-klink.png');
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `user`
+--
+
+CREATE TABLE `user` (
+  `id` smallint(5) UNSIGNED NOT NULL,
+  `registered` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `status` enum('new','approved','blocked') COLLATE utf8mb4_unicode_ci DEFAULT 'new',
+  `role` enum('company','admin') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'company',
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONEN DER TABELLE `user`:
+--
+
+--
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`id`, `registered`, `updated`, `status`, `role`, `email`, `password`) VALUES
+(1, '2016-07-03 11:21:32', '2016-07-03 11:22:05', 'approved', 'company', 'company@zendframework.center', '$2y$10$uo7E9Mr7bG8fWQKR2f7M0uscyqKxThLuwqkN7yT75zKt08if.oHp2'),
+(2, '2016-07-03 11:21:45', '2016-07-03 11:22:12', 'approved', 'admin', 'admin@zendframework.center', '$2y$10$gTgRb/9Vlb9GAYDgtbtPquK7hCp2qRvGa80xNFhAh8Ei6x4unlHzG'),
+(3, '2018-04-14 15:45:49', '2018-05-08 14:12:46', 'approved', 'admin', 'admin_mirco@web.de', '$2y$10$hOUxJOVs.ZdIkHXFPeqj5ORJpiw2hS7olOHSXmFgwBqLTa53QMuxa');
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `advert`
+--
 ALTER TABLE `advert`
-  ADD CONSTRAINT `advert_ibfk_1` FOREIGN KEY (`holidaycenter`) REFERENCES `holidaycenter` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `company` (`company`);
 
-SET FOREIGN_KEY_CHECKS=1;
+--
+-- Indizes für die Tabelle `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`id`);
 
-COMMIT;
+--
+-- Indizes für die Tabelle `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `advert`
+--
+ALTER TABLE `advert`
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT für Tabelle `company`
+--
+ALTER TABLE `company`
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT für Tabelle `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `advert`
+--
+ALTER TABLE `advert`
+  ADD CONSTRAINT `advert_ibfk_1` FOREIGN KEY (`company`) REFERENCES `company` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
