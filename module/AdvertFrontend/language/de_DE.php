@@ -33,6 +33,7 @@ return [
     // label texts
     'advert_frontend_label_last_update'      => 'Letzte Änderung: %1$s',
     'advert_frontend_label_type_contact'     => 'Ansprechpartner',
+	'advert_frontend_label_button'	=> 'Zeigen in Originalgröße', //NEU
 
     // action texts
     'advert_frontend_action_show_holiday'        => 'Urlaub anzeigen',

@@ -32,9 +32,19 @@ interface AdvertFormInterface extends FormInterface
      * @param array $holidaycenterOptions
      */
     public function setHolidaycenterOptions($holidaycenterOptions);
-
+	
+	/**
+     * Switch to add mode
+     */
+	//public function addMode(); //NEU
+	
     /**
      * Switch to edit mode
      */
     public function editMode();
+	
+	/**
+	 * NEU Add Image file upload filter to input filter
+	 */
+	public function addImageFileUploadFilter(); 
 }

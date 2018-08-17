@@ -26,7 +26,7 @@ interface HolidaycenterFormInterface extends FormInterface
     /**
      * Switch to add mode
      */
-    public function addMode();
+    public function addMode(); //übernehmen?
 
     /**
      * Switch to edit mode

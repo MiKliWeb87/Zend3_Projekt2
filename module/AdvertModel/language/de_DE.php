@@ -21,7 +21,9 @@ return [
     'advert_model_message_text_invalid'     => 'Mindestens %min% Zeichen eingeben!',
     'advert_model_message_location_missing' => 'Bitte Ort eingeben!',
     'advert_model_message_location_invalid' => 'Nur %min%-%max% Zeichen erlaubt!',
-
+	'holidaycenter_model_message_image_type'       => 'Nur PNG Grafiken erlaubt!', //NEU
+    'holidaycenter_model_message_image_size'       => 'Nur 128x128 bis 4096x4096 Pixel erlaubt!',//NEU
+	
     // option texts
     'advert_model_option_type_holiday'      => 'Urlaub',
     'advert_model_option_type_shortholiday' => 'Kurzurlaub',

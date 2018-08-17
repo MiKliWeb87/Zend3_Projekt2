@@ -45,7 +45,14 @@ $this->h1($advert->getTitle());
   <div class="panel-body">
     <div class="col-sm-9">
       <p><?= $advert->getText(); ?></p>
+	  <img src="<?= $advert->getImage() //NEU ?>" style="width:300px; height:200px;"> 
+		<div class="col-sm-9 form-control-static">  
+			<a target="_blank" href="<?= $advert->getImage() ?>" 
+			class="btn btn-default" role="button" style="float:left;">
+			<?= $this->translate('advert_frontend_label_button')?></a><!--NEU -->
+		</div>
     </div>
+	
     <div class="col-sm-3 holidaycenter">
       <p>
         <img class="img-responsive"

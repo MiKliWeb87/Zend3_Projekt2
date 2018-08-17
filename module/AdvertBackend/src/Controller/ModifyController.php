@@ -135,9 +135,21 @@ class ModifyController extends AbstractActionController
 
         $this->advertForm->bind($advert);
 
-        if ($this->getRequest()->isPost()) {
-            $this->advertForm->setData($this->params()->fromPost());
+        if ($this->getRequest()->isPost()) 
+		{
+            //$this->advertForm->setData($this->params()->fromPost());
+			$postData  = $this->params()->fromPost();	//NEU
+			$filesData = $this->params()->fromFiles(); //NEU
+			//NEU
+            if (isset($filesData['image']) && $filesData['image']['size'] > 0) 
+			{
+                $postData = array_merge_recursive($postData, $filesData);
+            }
 
+            $this->advertForm->setData($postData); //NEU
+            $this->advertForm->addImageFileUploadFilter(); //bis hier neu
+			
+			
             if ($this->advertForm->isValid()) {
                 $advert->update();
 

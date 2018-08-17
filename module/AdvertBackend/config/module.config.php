@@ -22,6 +22,11 @@ use Zend\Permissions\Acl\Acl;
 use Zend\Router\Http\Segment;
 
 return [
+	'holidaycenter_admin' => [
+        'image_file_path'    => PROJECT_ROOT . '/public',
+        'image_file_pattern' => '/images/%s.png',
+    ], //NEU
+
     'router'        => [
         'routes' => [
             'advert-backend' => [

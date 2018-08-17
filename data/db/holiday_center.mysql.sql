@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `advert` (
   `title` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `text` text COLLATE utf8mb4_unicode_ci,
   `location` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `holidaycenter` (`holidaycenter`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=20 ;

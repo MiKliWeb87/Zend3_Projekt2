@@ -61,17 +61,20 @@ class ModifyController extends AbstractActionController
     {
         $this->holidaycenterForm->addMode();
 
-        if ($this->getRequest()->isPost()) {
+        if ($this->getRequest()->isPost()) 
+		{
             $this->holidaycenterForm->setData($this->params()->fromPost());
 
-            if ($this->holidaycenterForm->isValid()) {
+            if ($this->holidaycenterForm->isValid()) 
+			{
                 $holidaycenter = $this->holidaycenterRepository->createHolidaycenterFromData(
                     $this->holidaycenterForm->getData()
                 );
 
                 $result = $this->holidaycenterRepository->saveHolidaycenter($holidaycenter);
 
-                if ($result) {
+                if ($result) 
+				{
                     $this->flashMessenger()->addSuccessMessage(
                         'holidaycenter_backend_message_saved_holidaycenter'
                     );
@@ -89,16 +92,21 @@ class ModifyController extends AbstractActionController
 
             $messages = $this->holidaycenterForm->getMessages();
 
-            if (isset($messages['csrf'])) {
+            if (isset($messages['csrf'])) 
+			{
                 $this->flashMessenger()->addErrorMessage(
                     'holidaycenter_backend_message_form_timeout'
                 );
-            } else {
+            } 
+			else 
+			{
                 $this->flashMessenger()->addErrorMessage(
                     'holidaycenter_backend_message_check_data'
                 );
             }
-        } else {
+        } 
+		else 
+		{
             $this->flashMessenger()->addInfoMessage(
                 'holidaycenter_backend_message_create_holidaycenter'
             );
@@ -147,7 +155,8 @@ class ModifyController extends AbstractActionController
 
             if (isset($filesData['logo'])
                 && $filesData['logo']['size'] > 0
-            ) {
+            ) 
+			{
                 $postData = array_merge_recursive($postData, $filesData);
             }
 

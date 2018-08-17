@@ -8,8 +8,11 @@
  */
 
 namespace AdvertBackend\Form;
-
+use AdvertModel\Filter\ImageFileUpload; //NEU
+use TravelloFilter\Filter\StringToUrlSlug;//NEU
+use Zend\Filter\StaticFilter;//NEU
 use Zend\Form\Element\Csrf;
+use Zend\Form\Element\File; //NEU
 use Zend\Form\Element\Select;
 use Zend\Form\Element\Submit;
 use Zend\Form\Element\Text;
@@ -37,7 +40,17 @@ class AdvertForm extends Form implements AdvertFormInterface
      * @var array
      */
     private $holidaycenterOptions;
-
+	
+	/**
+	 * @var string imagePfad/imagePath NEU
+	 */
+	private $imageFilePath;
+	
+	/**
+     * @var string NEU
+     */
+    private $imageFilePattern;
+	
     /**
      * @param array $statusOptions
      */
@@ -61,9 +74,27 @@ class AdvertForm extends Form implements AdvertFormInterface
     {
         $this->holidaycenterOptions = $holidaycenterOptions;
     }
+	
+	/**
+     * @param string $imageFilePath NEU
+     */
+    public function setImageFilePath($imageFilePath)
+    {
+        $this->imageFilePath = $imageFilePath;
+    }
+
+    /**
+     * @param string $imageFilePattern NEU
+     */
+    public function setImageFilePattern($imageFilePattern)
+    {
+        $this->imageFilePattern = $imageFilePattern;
+    }
 
     /**
      * Init form
+	 * Formularfelder wo einzelne Felder per add
+	 * hinzugefügt werden
      */
     public function init()
     {
@@ -158,6 +189,21 @@ class AdvertForm extends Form implements AdvertFormInterface
                 ],
             ]
         );
+		/**
+		 * Bild Upload Feld NEU
+		 */
+		$this->add(
+            [
+                'type'       => File::class,
+                'name'       => 'image',
+                'attributes' => [
+                    'class' => 'form-control-static',
+                ],
+                'options'    => [
+                    'label' => 'advert_backend_label_image',
+                ],
+            ]
+        );
 
         $this->add(
             [
@@ -172,7 +218,19 @@ class AdvertForm extends Form implements AdvertFormInterface
             ]
         );
     }
+	/**
+	 *Switch to add mode NEU
+	 *
+	 */
+	/*public function addMode() //noch übernehmen?
+    {
+        if ($this->has('logo')) {
+            $this->remove('logo');
+        }
 
+        $this->setValidationGroup(array_keys($this->getElements()));
+    } */
+	
     /**
      * Switch to edit mode
      */
@@ -191,5 +249,26 @@ class AdvertForm extends Form implements AdvertFormInterface
         }
 
         $this->setValidationGroup(array_keys($this->getElements()));
+    }
+	
+	/**NEU
+     * Add image file upload filter to input filter
+     */
+    public function addImageFileUploadFilter()
+    {
+        $nameValue = $this->get('location')->getValue() . rand(1,1000); //einzigartiger Name...erweitern?
+
+        $targetFile = sprintf(
+            $this->imageFilePattern,
+            StaticFilter::execute($nameValue, StringToUrlSlug::class)
+        );
+
+        $imageFileUploadFilter = new ImageFileUpload(
+            $this->imageFilePath, $targetFile
+        );
+
+        $this->getInputFilter()->get('image')->getFilterChain()->attach(
+            $imageFileUploadFilter
+        );
     }
 }

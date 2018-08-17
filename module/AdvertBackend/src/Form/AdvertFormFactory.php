@@ -58,13 +58,26 @@ class AdvertFormFactory implements FactoryInterface
         $holidaycenterRepository = $container->get(
             HolidaycenterRepositoryInterface::class
         );
-
+		
+		/** @var array $config */
+        $moduleConfig = $container->get('Config'); //NEU
+		
         $form = new AdvertForm();
         $form->setHydrator($advertHydrator);
         $form->setInputFilter($advertInputFilter);
         $form->setStatusOptions($advertConfig->getStatusOptions());
         $form->setTypeOptions($advertConfig->getTypeOptions());
         $form->setHolidaycenterOptions($holidaycenterRepository->getHolidaycenterOptions());
+		/**
+		 * Bilder Pfad NEU
+		 * Konfig dazu in der AdvertBackend module.config.php
+		 */
+		$form->setImageFilePath(
+            $moduleConfig['holidaycenter_admin']['image_file_path']
+        );
+        $form->setImageFilePattern(
+            $moduleConfig['holidaycenter_admin']['image_file_pattern']
+        );
 
         return $form;
     }

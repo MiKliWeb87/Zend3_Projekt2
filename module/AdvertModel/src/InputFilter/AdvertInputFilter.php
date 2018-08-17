@@ -12,7 +12,10 @@ namespace AdvertModel\InputFilter;
 use TravelloFilter\Filter\StringHtmlPurify;
 use Zend\Filter\StringTrim;
 use Zend\Filter\StripTags;
+use Zend\InputFilter\FileInput; //NEU
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\File\ImageSize; //neu
+use Zend\Validator\File\MimeType; //neu
 use Zend\Validator\InArray;
 use Zend\Validator\NotEmpty;
 use Zend\Validator\StringLength;
@@ -218,6 +221,34 @@ class AdvertInputFilter extends InputFilter
                             'min'      => 3,
                             'max'      => 64,
                             'message'  => 'advert_model_message_location_invalid',
+                        ],
+                    ],
+                ],
+            ]
+        );
+		//Filter für Bilder NEU
+		$this->add(
+            [
+                'name'       => 'image',
+                'type'       => FileInput::class,
+                'required'   => false,
+                'filters'    => [],
+                'validators' => [
+                    [
+                        'name'    => MimeType::class,
+                        'options' => [
+                            'mimeType' => 'image/png,image/x-png,image/jpeg, image/jpg',
+                            'message'  => 'advert_model_message_image_type',
+                        ],
+                    ],
+                    [
+                        'name'    => ImageSize::class,
+                        'options' => [
+                            'minWidth'  => 128,
+                            'minHeight' => 128,
+                            'maxWidth'  => 4096,
+                            'maxHeight' => 4096,
+                            'message'   => 'advert_model_message_image_size',
                         ],
                     ],
                 ],

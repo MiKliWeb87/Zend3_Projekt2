@@ -161,9 +161,9 @@ class HolidaycenterForm extends Form implements HolidaycenterFormInterface
     }
 
     /**
-     * Switch to add mode
+     * Switch to add/anlegen mode
      */
-    public function addMode()
+    public function addMode() //noch übernehmen?
     {
         if ($this->has('logo')) {
             $this->remove('logo');
@@ -173,7 +173,7 @@ class HolidaycenterForm extends Form implements HolidaycenterFormInterface
     }
 
     /**
-     * Switch to edit mode
+     * Switch to edit/bearbeiten mode
      */
     public function editMode()
     {

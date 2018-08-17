@@ -63,6 +63,11 @@ class AdvertEntity
      * @var string
      */
     private $location;
+	
+	/**
+     * @var string
+     */
+    private $image; //NEU
 
     /**
      * @return int
@@ -214,6 +219,22 @@ class AdvertEntity
     public function setLocation($location)
     {
         $this->location = trim($location);
+    }
+	
+	/**
+     * @return string
+     */
+    public function getImage() //NEU
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image) //NEU
+    {
+        $this->image = trim($image);
     }
 
     /**
