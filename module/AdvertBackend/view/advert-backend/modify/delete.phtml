@@ -168,5 +168,16 @@ $this->h1('advert_backend_h1_display_delete');
         <?= $advert->getText() ?>
       </div>
     </div>
+	
+	<div class="form-group">
+      <label class="col-sm-1 control-label">
+        <?= $this->translate('advert_backend_label_image') ?>
+      </label>
+	  <?php if($advert->getImage() != null): //NEU?>
+		<img src="<?= $advert->getImage()  ?>" style="width:300px; height:200px;">
+		<?php else:?> 
+		<p id="noImage"> <?= $this->translate('advert_backend_message_no_image');?> </p>
+		<?php endif; ?>
+    </div>
   </form>
 </div>

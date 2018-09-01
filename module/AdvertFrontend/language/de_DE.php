@@ -29,6 +29,7 @@ return [
     // message texts
     'advert_frontend_message_type_holiday'       => 'Urlaub in %1$s',
     'advert_frontend_message_type_shortholiday'   => 'Kurzurlaub in %1$s',
+	'advert_frontend_message_no_image'			=> 'Kein Bild vorhanden', //NEU
 
     // label texts
     'advert_frontend_label_last_update'      => 'Letzte Änderung: %1$s',

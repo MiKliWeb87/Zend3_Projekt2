@@ -41,7 +41,8 @@ return [
     'advert_backend_message_blocked_advert'  => 'Die Annonce wurde gesperrt!',
     'advert_backend_message_check_data'      => 'Bitte überprüfen Sie die Daten der Annonce!',
     'advert_backend_message_form_timeout'    => 'Zeitüberschreitung! Bitte Formular erneut absenden!',
-
+	'advert_backend_message_no_image'			=> 'Kein Bild vorhanden', //NEU
+	
     // label texts
     'advert_backend_label_created'           => 'Angelegt',
     'advert_backend_label_updated'           => 'Geändert',

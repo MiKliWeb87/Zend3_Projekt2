@@ -9,15 +9,19 @@
 
 use AdvertModel\Entity\AdvertEntity;
 
+/*Detailanzeige der Annoncen für den normalen User */
+
 /** @var AdvertEntity $advert */
 $advert = $this->advert;
 
-if ($advert->getType() == 'holiday') {
+if ($advert->getType() == 'holiday') 
+{
   $color         = 'primary';
   $advertMessage = 'advert_frontend_message_type_holiday';
   $listLink      = $this->url('advert-holiday', [], true);
   $listText      = 'advert_frontend_action_back_holidays';
-} else {
+} else 
+{
   $color         = 'success';
   $advertMessage = 'advert_frontend_message_type_shortholiday';
   $listLink      = $this->url('advert-shortholiday', [], true);
@@ -45,12 +49,17 @@ $this->h1($advert->getTitle());
   <div class="panel-body">
     <div class="col-sm-9">
       <p><?= $advert->getText(); ?></p>
+	  
+	<?php if($advert->getImage() != null): //NEU Wenn Bild da?>
 	  <img src="<?= $advert->getImage() //NEU ?>" style="width:300px; height:200px;"> 
 		<div class="col-sm-9 form-control-static">  
 			<a target="_blank" href="<?= $advert->getImage() ?>" 
 			class="btn btn-default" role="button" style="float:left;">
 			<?= $this->translate('advert_frontend_label_button')?></a><!--NEU -->
 		</div>
+	<?php else: //Kein Bild vorhanden?> 
+		<p id="noImage"> <?= $this->translate('advert_frontend_message_no_image');?> </p>
+		<?php endif; ?>	
     </div>
 	
     <div class="col-sm-3 holidaycenter">

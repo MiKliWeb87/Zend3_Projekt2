@@ -41,6 +41,7 @@ return [
     'advert_backend_message_blocked_advert'  => 'The advert was blocked!',
     'advert_backend_message_check_data'      => 'Please check the advert data!',
     'advert_backend_message_form_timeout'    => 'Timeout! Please send the form again!',
+	'advert_backend_message_no_image'		 => 'No Image', //NEU
 
     // label texts
     'advert_backend_label_created'           => 'Created',
@@ -51,6 +52,7 @@ return [
     'advert_backend_label_location'          => 'Location',
     'advert_backend_label_title'             => 'Title',
     'advert_backend_label_text'              => 'Text',
+	'advert_backend_label_image'              => 'Image from hotel', //NEU
 
     // action texts
     'advert_backend_action_save'             => 'Save advert',

@@ -11,7 +11,9 @@ use AdvertModel\Entity\AdvertEntity;
 
 /** @var AdvertEntity $advert */
 $advert = $this->advert;
+/* Detail Anzeige Backend(Annoncen) */
 
+	
 $listLink    = $this->url('advert-backend', [], true);
 $showLink    = $this->url(
     'advert-backend/show', ['id' => $advert->getId()], true
@@ -157,7 +159,11 @@ $this->h1('advert_backend_h1_display_show');
       <label class="col-sm-1 control-label">
         <?= $this->translate('advert_backend_label_image') ?>
       </label>
-		<img src="<?= $advert->getImage() //NEU ?>" style="width:300px; height:200px;">	
+	  <?php if($advert->getImage() != null): //NEU?>
+		<img src="<?= $advert->getImage()  ?>" style="width:300px; height:200px;">
+		<?php else:?> 
+		<p id="noImage"> <?= $this->translate('advert_backend_message_no_image');?> </p>
+		<?php endif; ?>
     </div>
 	
   </form>
