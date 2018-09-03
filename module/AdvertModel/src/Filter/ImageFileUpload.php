@@ -14,7 +14,7 @@ namespace AdvertModel\Filter;
 use Zend\Filter\File\RenameUpload;
 
 /**
- * Class ImageFileUpload NEU
+ * Class ImageFileUpload //NEU
  *
  * @package AdvertModel\Filter
  */
@@ -44,7 +44,7 @@ class ImageFileUpload extends RenameUpload
         $options = [
             'overwrite' => true,
             'target'    => $targetPath . $targetFile,
-        ];
+        ]; //hier Multiupload Einstellung?
 
         parent::__construct($options);
     }

@@ -145,15 +145,96 @@ in den Annoncen
 
 a) Dateien suchen die relevant für den Upload sind bzw. die entsprechenden Dateien in den Annoncen(Advert) Dateien:
 		AdvertForm.php
-		AdvertFormFactory.php
 		AdvertFormInterface.php
+		AdvertFormFactory.php
 		AdvertEntity.php
 		AdvertInputFilter.php
 		module\AdvertBackend\config\module.config.php
 		module\AdvertBackend\src\Controller\ModifyController.php
 		module\AdvertModel\src\Filter\ImageFileUpload.php die eine Kopie der 
 			LogoFileUpload.php ist, mit entsprechender Änderung der Namen.
+		+ die Sprachdateien beim einfügen neuer Texte die übersetzt werden müssen.
+
+b) In der Datenbank wird die neue Spalte image eingefügt oder die Datenbank mit folgendem Zusatz neu erstellt:
+	`image` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 	
+c) in der AdvertForm.php das Image Upload Feld vor dem Submit Button setzen:
+	/**
+		 * Bild Upload Feld NEU
+		 */
+		$this->add(
+            [
+                'type'       => File::class,
+                'name'       => 'image',
+                'attributes' => [
+                    'class' => 'form-control-static',
+                ],
+                'options'    => [
+                    'label' => 'advert_backend_label_image',
+                ],
+            ]
+        );
+	noch dazu die 4 use Einbindungen:
+		use AdvertModel\Filter\ImageFileUpload; //NEU
+		use TravelloFilter\Filter\StringToUrlSlug;//NEU
+		use Zend\Filter\StaticFilter;//NEU
+		use Zend\Form\Element\File; //NEU
+	
+	Anlegung der 2 Variablen:
+		
+	private $imageFilePath;
+    private $imageFilePattern;
+	
+	sowie die beiden Funktionen:
+		public function setImageFilePath($imageFilePath)
+		{
+			$this->imageFilePath = $imageFilePath;
+		}
+		public function setImageFilePattern($imageFilePattern)
+		{
+			$this->imageFilePattern = $imageFilePattern;
+		}
+	
+	ganz nach unten zudem die addImageFileUploadFilter() Funktion:
+	
+		/**NEU
+		 * Add image file upload filter to input filter
+		 */
+		public function addImageFileUploadFilter()
+		{
+			$nameValue = $this->get('location')->getValue() . rand(1,1000); //einzigartiger Name...erweitern?
+
+			$targetFile = sprintf(
+				$this->imageFilePattern,
+				StaticFilter::execute($nameValue, StringToUrlSlug::class)
+			);
+
+			$imageFileUploadFilter = new ImageFileUpload(
+				$this->imageFilePath, $targetFile
+			);
+
+			$this->getInputFilter()->get('image')->getFilterChain()->attach(
+				$imageFileUploadFilter
+			);
+		}
+	
+	c2) In der AdvertFormInterface.php
+		die Funktion addImageFileUploadFilter() für die AdvertForm.php hinzufügen:
+		
+		/**
+		 * NEU Add Image file upload filter to input filter
+		 */
+		public function addImageFileUploadFilter();
+		
+	c3) in der AdvertBackend module.config.php wird der Pfad und die 
+	Eigenschaft des Bildes festgelegt(png):
+	
+	'holidaycenter_admin' => [
+        'image_file_path'    => PROJECT_ROOT . '/public',
+        'image_file_pattern' => '/images/%s.png',
+    ], //NEU Ordnerpfad und Endung für Bilder festlegen
+	
+d) 
  -->
 
 
