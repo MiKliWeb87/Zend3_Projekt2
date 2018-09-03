@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h2> cmd Protokoll Zend Projekt 2 </h2>
+	<p>
+		<ul>
+			<li>Ordner zf3_mirco_projekt2 angelegt</li>
+			<li>Daten aus ZendframeworkCenter Kapitel 15_07 in Ordner kopiert(außer vendor) </li>
+			<li>oder anlegen mit composer create-project MiKliWeb87/Zend3_Projekt2 /path/to/install </li>
+		</ul>
+	</p>
+
+	<h3> Verzeichnis wechseln</h3>
+	<p>
+	A:\devhost><pre>cd zf3_mirco_projekt2</pre>
+	</p>
+	<p>
+ 	A:\devhost\zf3_mirco_projekt2><pre>composer install<br>
+
+	  
+
+<!--
+####Umbau der nicht ging
+Unternehmen in travelcenter(Reisebüro) geändert
+Das auslesen des Reisebüros funktionierte, jedoch bei den Annoncen wurden keine Bilder und der Ansprechpartner nicht 
+ausgelesen, außerdem gab es Probleme beim anlegen eines neuen Auftrags, deren Fehler ich nicht beheben konnte, dies habe ich allerdings erst nach dem weiteren Umbau festgestellt...
+
+nach Änderung der Datenbank von Job/Projekte in travel/shorttravel
+gab es das Problem beim erstellen einer Annonce welches auch in der vorherigen Version mit Job/Projekte auftrat(siehe oben),
+den Fehler konnte ich mangels Kenntnisse und Fehlerverweise auf den vendor Ordner nicht lösen
+
+Nächster Schritt: Zurück zum Ursprung
+
+#### Umbau der funktionierte
+1. Umbau des Projektes von Job/Projekte zu Urlaub/Kurzurlaub
+d.h. alle Dateien werden durchsucht nach Job bzw. Projekt und ersetzt durch Urlaub/Kurzurlaub
+außerdem müssen alle Sprachdateien entsprechend geändert werden
+
+2. Umbau des Unternehmens zu Holidaycenter(Reisebüro)
+
+a)in Projektordner -> config -> application.config.php
+die Module 
+	'HolidaycenterBackend',
+	'HolidaycenterModel',
+hinzufügen
+
+b) in der composer.json beim autoload die Pfade zu den neuen Modulen hinzufügen:
+	"HolidaycenterModel\\": "module/HolidaycenterModel/src/",
+	"HolidaycenterBackend\\": "module/HolidaycenterBackend/src/",
+
+c) In module\Application\config\module.config.php &
+	in module\AdvertFrontend\config\module.config.php &
+	in module\UserFrontend\config\module.config.php
+	die User Rolle "CompanyRole" ändern oder die Rolle "HolidaycenterRole" hinzufügen
+	sowie die use 
+	"use UserModel\Permissions\Role\HolidaycenterRole;"
+	in allen 3 Dateien & in module\UserModel\src\Permissions\UserAcl.php
+	einfügen
+
+d) die Ordner "CompanyBackend" & "CompanyModel" kopieren und in 
+	HolidaycenterModel & HolidaycenterBackend umbenennen
+
+e) Alle Dateien & Ordner in diesen beiden Ordnern die "Company" im Namen tragen 
+umbenennen in Holidaycenter bzw. holidaycenter(bei klein company)
+
+f) In allen Dateien in den beiden neuen Ordnern die Wörter company, Company und COMPANY 
+durch holidaycenter, Holidaycenter und HOLIDAYCENTER ersetzen
+
+g) in module\Application\view\application\index\index.phtml
+Company getter durch Holidaycenter getter ersetzt
+
+h) In module\UserModel\config\user.config.php die roleOption
+	'holidaycenter' => 'user_model_option_role_holidaycenter',
+hinzugefügt
+	in den User language dateien "holidaycenter" option role hinzugefügt
+	
+i) In module\UserModel\src\Entity\UserEntity.php
+		die setRole() Funktion von company auf holidaycenter geändert
+	& module\UserModel\src\Repository\UserRepository.php
+		die Funktion createUserFromData() entsprechend company auf holidaycenter geändert
+
+j) Die Datei module\UserModel\src\Permissions\Role\CompanyRole.php
+	kopiert und in HolidaycenterRole.php geändert sowie deren Inhalt auf 
+	holidaycenter angepasst
+
+k) in module\UserModel\src\Permissions\UserAcl.php
+$this->addRole(new HolidaycenterRole()); //neue Nutzerrolle
+einfügen
+
+l) in module\AdvertModel\src\Storage\Db\AdvertDbStorage.php
+	company & Company durch holidaycenter & Holidaycenter ersetzen
+
+m) In module\AdvertFrontend\view\advert-frontend\display\detail.phtml &
+      module\AdvertFrontend\view\advert-frontend\display\index.phtml
+	getCompany() durch GetHolidaycenter() ersetzen
+
+n) In module\AdvertModel\src\Hydrator\AdvertHydrator.php & 
+	  module\AdvertModel\src\Entity\AdvertEntity.php
+	alle use bzw. Einträge die Company beinhalten zu Holidaycenter ändern(Groß-/KLeinschreibung beachten)
+
+o) In den 3 Form Dateien 
+	module\AdvertBackend\src\Form\AdvertForm.php &
+	module\AdvertBackend\src\Form\AdvertFormFactory.php &
+	module\AdvertBackend\src\Form\AdvertFormFactory.php
+   müssen ebenfalls die company Einträge zu holidaycenter geändert werden
+ 
+p) Im InputFilter Ordner die 3 Dateien
+	module\AdvertModel\src\InputFilter\AdvertInputFilter.php &
+	module\AdvertModel\src\InputFilter\AdvertInputFilterFactory.php &
+	module\AdvertModel\src\InputFilter\AdvertInputFilterInterface.php
+		ebenfalls nach Company u. company durchforsten und diese ändern
+q) Im Repository Ordner von AdvertModel 
+   muss nur die Datei 
+		module\AdvertModel\src\Repository\AdvertRepository.php
+   durchsucht und abgeändert werden
+   
+r) Im AdvertBackend view Ordner müssen die Dateien 
+		module\AdvertBackend\view\advert-backend\display\index.phtml &
+		module\AdvertBackend\view\advert-backend\display\show.phtml &
+		module\AdvertBackend\view\advert-backend\modify\approve.phtml &
+		module\AdvertBackend\view\advert-backend\modify\block.phtml &
+		module\AdvertBackend\view\advert-backend\modify\delete.phtml &
+		module\AdvertBackend\view\advert-backend\modify\edit.phtml
+	nach Company durchsucht und geändert werden
+
+Nach diesen Änderungen sollte auf der Startseite wieder alles funktionieren...
+Auch die Seiten Annoncen und Reisebüro administrieren gehen. 
+Einzig die Detail Seiten der Annoncen zeigen nicht alles an unter anderem die Logos und der 
+der Ansprechpartner sowie die Email Adresse des Reisebüros. Warum? 
+Eine kleine Minizahl macht einem einen Strich durch die Rechnung. 
+Diese finden wir in 
+	module\HolidaycenterModel\src\Hydrator\Strategy\HolidaycenterEntityStrategy.php
+	und ist die Zahl beim substr() und zwar die "8" diese muss auf die Länge der 
+	Ersetzung, im Holidaycenter Fall also 14 gesetzt werden(13 Buchstaben und den Unterstrich)
+	danach funktioniert auch die join Abfrage im AdvertDbStorage wieder und die Logos 
+	und email Adressen sind zu sehen. 
+
+s) Nun können eventuell noch Änderungen an den language Dateien vorgenommen werden, 
+falls dort noch Wörter ersetzt werden sollen 
+
+2. Umbau des Projektes zum Reisebüro, erstellen der Möglichkeit eines Bilder Uploads
+in den Annoncen 
+
+a) Dateien suchen die relevant für den Upload sind bzw. die entsprechenden Dateien in den Annoncen(Advert) Dateien:
+		AdvertForm.php
+		AdvertFormFactory.php
+		AdvertFormInterface.php
+		AdvertEntity.php
+		AdvertInputFilter.php
+		module\AdvertBackend\config\module.config.php
+		module\AdvertBackend\src\Controller\ModifyController.php
+		module\AdvertModel\src\Filter\ImageFileUpload.php die eine Kopie der 
+			LogoFileUpload.php ist, mit entsprechender Änderung der Namen.
+	
+ -->
+
+
+
+		
+		
+
+</body>
+</html> 
+
+
+
+

@@ -25,7 +25,7 @@ return [
 	'holidaycenter_admin' => [
         'image_file_path'    => PROJECT_ROOT . '/public',
         'image_file_pattern' => '/images/%s.png',
-    ], //NEU
+    ], //NEU Ordnerpfad und Endung für Bilder festlegen
 
     'router'        => [
         'routes' => [
