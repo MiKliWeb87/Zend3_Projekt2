@@ -52,7 +52,7 @@ return [
     'advert_backend_label_location'          => 'Location',
     'advert_backend_label_title'             => 'Title',
     'advert_backend_label_text'              => 'Text',
-	'advert_backend_label_image'              => 'Image from hotel', //NEU
+	'advert_backend_label_image'              => 'Image from hotel/city', //NEU
 
     // action texts
     'advert_backend_action_save'             => 'Save advert',
