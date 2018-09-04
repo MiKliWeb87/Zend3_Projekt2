@@ -18,7 +18,15 @@
 	</p>
 	<p>
  	A:\devhost\zf3_mirco_projekt2><pre>composer install<br>
-
+	</p>
+	<p> In der projektname\config\autoload\local.php muss unter Windows der html purifier gesetzt werden:
+	
+	return [
+	'html_purifier_config' => [
+        'Cache.SerializerPath' => 'A:\devhost\zf3_mirco_projekt2\temp',
+		],
+	];
+	</p>
 	  
 
 <!--
@@ -234,7 +242,149 @@ c) in der AdvertForm.php das Image Upload Feld vor dem Submit Button setzen:
         'image_file_pattern' => '/images/%s.png',
     ], //NEU Ordnerpfad und Endung für Bilder festlegen
 	
-d) 
+d) In der AdvertFormFactory.php muss die Config der module.config gerufen 
+werden(Zeile 64): 
+	/** @var array $config */
+        $moduleConfig = $container->get('Config'); //NEU
+
+Vor dem Return der form werden dann noch die beiden config Funktionen
+aufgerufen(Zeile 77/80): 
+
+	$form->setImageFilePath(
+            $moduleConfig['holidaycenter_admin']['image_file_path']
+        );
+        $form->setImageFilePattern(
+            $moduleConfig['holidaycenter_admin']['image_file_pattern']
+        );
+		
+e) In der AdvertEntity.php wird die Variable fürs Bild und die getter 
+und setter fürs Bild gesetzt:
+	
+	 private $image; //NEU
+	 
+	public function getImage() //NEU
+    {
+        return $this->image;
+    }
+
+    public function setImage($image) //NEU
+    {
+        $this->image = trim($image);
+    }
+
+f) In der AdvertInputFilter.php werden die use EInbindungen 
+	
+	use Zend\InputFilter\FileInput; //NEU
+	use Zend\Validator\File\ImageSize; //neu
+	use Zend\Validator\File\MimeType; //neu
+
+	und der Filter fürs Bild gesetzt, dazu muss in der Sprachdatei der entsprechende Text bzw. Übersetzung geschrieben werden(language Ordner von AdvertModel):
+	
+		//Filter für Bilder NEU
+		$this->add(
+            [
+                'name'       => 'image',
+                'type'       => FileInput::class,
+                'required'   => false,
+                'filters'    => [],
+                'validators' => [
+                    [
+                        'name'    => MimeType::class,
+                        'options' => [
+                            'mimeType' => 'image/png,image/x-png,image/jpeg, image/jpg',
+                            'message'  => 'advert_model_message_image_type',
+                        ],
+                    ],
+                    [
+                        'name'    => ImageSize::class,
+                        'options' => [
+                            'minWidth'  => 128,
+                            'minHeight' => 128,
+                            'maxWidth'  => 4096,
+                            'maxHeight' => 4096,
+                            'message'   => 'advert_model_message_image_size',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+g) In der module\AdvertBackend\src\Controller\ModifyController.php
+werden in der if Anweisung(Zeile 140) die Daten des Bildes geholt
+und der Filter aufgerufen: 
+
+	if ($this->getRequest()->isPost()) 
+		{
+            //$this->advertForm->setData($this->params()->fromPost());
+			$postData  = $this->params()->fromPost();	//NEU
+			$filesData = $this->params()->fromFiles(); //NEU
+			//NEU
+            if (isset($filesData['image']) && $filesData['image']['size'] > 0) 
+			{
+                $postData = array_merge_recursive($postData, $filesData);
+            }
+
+            $this->advertForm->setData($postData); //NEU
+            $this->advertForm->addImageFileUploadFilter(); //bis hier neu
+			
+	[...]
+
+Dies waren die Umstellungen der Dateien die mit dem Bildupload zu tun hatten was 
+das interne angeht. Als nächstes fehlen noch die Dateien für den User damit 
+dieser das hochgeladene Bild auch sieht. Dies wird für den Admin genauso geschehen
+wie für den normalen User. Für den normalen User wird das Bild zu der Annonce nur 
+auf der Detail Seite angezeigt, nicht in der Übersicht oder der Startseite.
+ 
+	Die Dateien sind folgende:
+	
+	für den Backend User(Admin):
+	module\AdvertBackend\view\advert-backend\display\show.phtml
+	module\AdvertBackend\view\advert-backend\modify\block.phtml
+	module\AdvertBackend\view\advert-backend\modify\approve.phtml
+	module\AdvertBackend\view\advert-backend\modify\delete.phtml
+	
+	für den normalen User: 
+	module\AdvertFrontend\view\advert-frontend\display\detail.phtml
+	
+h) In den 4 Dateien für den BackendUser werden innerhalb des form Tags folgende 
+Zeilen hinzugefügt: 
+
+	<div class="form-group">
+      <label class="col-sm-1 control-label">
+        <?= $this->translate('advert_backend_label_image') ?>
+      </label>
+	  <?php if($advert->getImage() != null): //NEU?>
+		<img src="<?= $advert->getImage()  ?>" style="width:300px; height:200px;">
+		<?php else:?> 
+		<p id="noImage"> <?= $this->translate('advert_backend_message_no_image');?> </p>
+		<?php endif; ?>
+    </div>
+
+	Es wird nach dem setzen des Labels abgefragt ob ein Bild vorhanden ist und wenn 
+	ja dieses ausgelesen. Wenn nicht soll anstelle des leeren Image Rahmens ein Text angezeigt werden.
+	
+i) in der detail.phtml für den Frontend User wird zusätzlich auf der Detailseite
+ein Button unterm dem Bild mit eingebaut der das Bild in einem neuen Tab in Originalbildgröße
+anzeigt: 
+		<?php if($advert->getImage() != null): //NEU Wenn Bild da?>
+		<img src="<?= $advert->getImage() //NEU ?>" style="width:300px; height:200px;"> 
+		<div class="col-sm-9 form-control-static">  
+			<a target="_blank" href="<?= $advert->getImage() ?>" 
+			class="btn btn-default" role="button" style="float:left;">
+			<?= $this->translate('advert_frontend_label_button')?></a><!--NEU -->
+<!--	</div>
+		<?php else: //Kein Bild vorhanden?> 
+		<p id="noImage"> <?= $this->translate('advert_frontend_message_no_image');?> </p>
+		<?php endif; ?>	
+		</div>
+
+		
+		
+Einbauen: ?
+Hotelname?
+Sterne?
+Preis?
+Anzahl Tage?
  -->
 
 
